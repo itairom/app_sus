@@ -5,7 +5,9 @@ import { utilService } from '../../../services/util-service.js'
 export const mailService = {
     query,
     getMailById,
-    deleteMailById
+    deleteMailById,
+    _saveMail,
+    _createMail
 }
 
 let gMails = [
@@ -14,6 +16,10 @@ let gMails = [
     { id: utilService.makeId, subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
     { id: utilService.makeId, subject: 'asdsdsdsdsd?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
 ]
+
+function _createMail(...args) {
+    console.log(args);
+}
 
 function query(filterBy) {
     if (filterBy) {
@@ -24,23 +30,28 @@ function query(filterBy) {
 }
 
 function _saveMail(mail) {
+    console.log(mail);
     gMails.unshift(mail)
+
+    console.log(gMails);
     return Promise.resolve(mail)
+}
 
-    function deleteMailById(mailId) {
-        let mailIdx = gMails.findIndex(mail => {
-            return mailId === mail.id
-        })
-        gMails.splice(mailIdx, 1)
-        return Promise.resolve()
-    }
 
-    function getMailById(mailId) {
-        let currMail = gMails.find(mail => {
-            return mailId === mail.id
-        })
-        return Promise.resolve(currMail)
-    }
+function deleteMailById(mailId) {
+    let mailIdx = gMails.findIndex(mail => {
+        return mailId === mail.id
+    })
+    gMails.splice(mailIdx, 1)
+    return Promise.resolve()
+}
+
+function getMailById(mailId) {
+    let currMail = gMails.find(mail => {
+        return mailId === mail.id
+    })
+    return Promise.resolve(currMail)
+}
 
 
 

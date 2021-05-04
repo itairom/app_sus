@@ -1,8 +1,6 @@
 import { EmailPreview } from './EmailPreview.jsx'
 
 export function EmailList({ mails }) {
-console.log(mails);
-
 
     return (
         <div mail-list>

@@ -1,26 +1,36 @@
+import { mailService } from '../services/mail-service.js'
+import { utilService } from '../../../services/util-service.js'
+
+
 export class EmailCompose extends React.Component {
 
     state = {
-        subject: null,
-        body: null,
-        id: null,
-        subject: null,
-        isRead: false
+        mail: {
+            subject: null,
+            body: null,
+            id: utilService.makeId(),
+            subject: null,
+            isRead: false
+        }
     }
     componentDidMount() {
-
     }
 
-    onSaveMail = () => {
-
+    onSaveMail = (ev) => {
+        ev.preventDefault()
+        mailService._saveMail(this.state.mail)
+            .then(() => {
+                
+                // this.props.history.push('/mail')
+            })
     }
 
     handleChange = ({ target }) => {
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
         this.setState(prevState => ({
-            car: {
-                ...prevState.car,
+            mail: {
+                ...prevState.mail,
                 [field]: value
             }
         }))
@@ -29,7 +39,7 @@ export class EmailCompose extends React.Component {
     render() {
 
 
-        const { body, id, isRead, subject } = this.state
+        const { body, isRead, subject } = this.state.mail
 
         return (
             <div className="compose-mail flex">

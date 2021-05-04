@@ -1,3 +1,4 @@
+const { Route, Switch, Link } = ReactRouterDOM
 // import React from 'react'
 import { mailService } from '../services/mail-service.js'
 import { EmailList } from './EmailList.jsx'
@@ -31,6 +32,9 @@ export class EmailApp extends React.Component {
         return (
             <React.Fragment>
                 {(this.state.isCompose) && <EmailCompose />}
+                {/* <h1 onClick={() => { this.toggleCompose() }} className="add-btn">
+                    <Link to="/mail/compose">+ </Link>
+                    </h1> */}
                 <h1 onClick={() => { this.toggleCompose() }} className="add-btn">+</h1>
                 <EmailList mails={this.state.mails} />
             </React.Fragment>
