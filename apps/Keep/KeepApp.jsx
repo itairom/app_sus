@@ -1,10 +1,10 @@
 import { KeepService } from './services/keep-service.js'
-import { NoteAdd } from '../Keep/cmps/NoteAdd.jsx'
+import { KeepAdd } from './cmps/KeepAdd.jsx'
+import { KeepList } from './cmps/KeepList.jsx'
 
 export class KeepApp extends React.Component {
     state = {
-        notes: null,
-        currView: "NoteText"
+        notes: []
     }
 
     componentDidMount() {
@@ -19,31 +19,15 @@ export class KeepApp extends React.Component {
             })
     } 
 
-
-    // DynamicCmp = (props) => {
-    //     switch (this.state.currView) {
-    //         case 'NoteText':
-    //             return <NoteText {...props} />
-    //         case 'NoteImg':
-    //             return <NoteImg {...props} />
-    //         case 'NoteTodos':
-    //             return <NoteTodos {...props} />
-    //         default:
-    //             return 
-    //     }
-    // }
-
-
-
     render() {
-        const { notes,currView } = this.state
-        if (!notes) return <div>Loading...</div>
+        const { notes } = this.state
+        if (!notes || !notes.length) return <div>Loading...</div>
         return (
-            <section>
-                <NoteAdd/>
+            <section className="keep-app">
+                <KeepAdd/>
                 <h2>Your Notes</h2>
+                <KeepList notes={notes}/>
 
-                {/* <this.DynamicCmp name ={currView}/> */}
             </section>
         )
     }

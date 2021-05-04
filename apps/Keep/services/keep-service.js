@@ -13,6 +13,7 @@ function query() {
 
 var gNotes = [
     {
+        id:utilService.makeId(),
         type: "NoteText",
         isPinned: true,
         info: {
@@ -21,6 +22,7 @@ var gNotes = [
     },
 
     {
+        id:utilService.makeId(),
         type: "NoteImg",
         info: {
             url: "http://some-img/me",
@@ -32,13 +34,21 @@ var gNotes = [
     },
 
     {
+        id:utilService.makeId(),
         type: "NoteTodos",
         info: {
-            label: "How was it:",
+            label: "ToDos",
             todos: [
                 { txt: "Do that", doneAt: null },
                 { txt: "Do this", doneAt: 187111111 }
             ]
+        }
+    },
+    {
+        id:utilService.makeId(),
+        type: "NoteVideo",
+        info: {
+            txt: "note-video"  
         }
     }
 ];

@@ -7,3 +7,6 @@
 @import '../css/basics/MainNav.css';
 @import '../css/basics/UserMsg.css';
 
+
+/* KEEP */
+@import '../css/apps/keep/notes/keep-list.css' 
