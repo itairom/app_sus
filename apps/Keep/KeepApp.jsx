@@ -23,10 +23,11 @@ export class KeepApp extends React.Component {
         KeepService._addNote(note)
         this.loadNotes()
     }
-
-    // onDeleteNote=()=>{
-
-    // }
+    
+    onDeleteNote=()=>{
+        KeepService.deleteNote(noteId)
+        this.loadNotes()
+    }
 
     render() {
         const { notes } = this.state
