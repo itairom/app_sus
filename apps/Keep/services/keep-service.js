@@ -5,6 +5,12 @@ export const KeepService = {
     query
 }
 
+function query() {
+    return Promise.resolve(gNotes)
+}
+
+
+
 var gNotes = [
     {
         type: "NoteText",
@@ -36,9 +42,3 @@ var gNotes = [
         }
     }
 ];
-
-function query() {
-    return Promise.resolve(gNotes)
-}
-
-
