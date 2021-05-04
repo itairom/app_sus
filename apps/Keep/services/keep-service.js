@@ -2,18 +2,59 @@ import { utilService } from '../../../services/util-service.js'
 import { storageService } from '../../../services/storage-service.js'
 
 export const KeepService = {
-    query
+    query,
+    getNoteById,
+    // saveNote
+    _addNote,
+    deleteNote
+
 }
 
 function query() {
     return Promise.resolve(gNotes)
 }
 
+function getNoteById(NoteId) {
+    var note = gNotes.find(function (note) {
+        return noteId === note.id
+    })
+    return Promise.resolve(note)
+}
+
+function saveNote(note) {
+    return note.id ? _updateNote(note) : _addNote(note)
+}
+
+function _addNote(noteToAdd) {
+    noteToAdd.id = utilService.makeId()
+    gNotes.unshift(noteToAdd)
+    // _saveNotesToStorage();
+    return Promise.resolve(noteToAdd)
+}
+
+function _updateNote(noteToUpdate) {
+    var noteIdx = gNotes.findIndex(function (note) {
+        return note.id === noteToUpdate.id;
+    })
+    gNotes.splice(noteIdx, 1, noteToUpdate)
+    // _saveNotesToStorage();
+    return Promise.resolve(noteToUpdate)
+}
+
+function deleteNote(noteId) {
+    var noteIdx = gNotes.findIndex(function (note) {
+        return noteId === note.id
+    })
+    gNotes.splice(noteIdx, 1)
+    // _savenotesToStorage();
+
+    return Promise.resolve()
+}
 
 
 var gNotes = [
     {
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         type: "NoteText",
         isPinned: true,
         info: {
@@ -22,7 +63,7 @@ var gNotes = [
     },
 
     {
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         type: "NoteImg",
         info: {
             url: "http://some-img/me",
@@ -34,7 +75,7 @@ var gNotes = [
     },
 
     {
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         type: "NoteTodos",
         info: {
             label: "ToDos",
@@ -45,10 +86,10 @@ var gNotes = [
         }
     },
     {
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         type: "NoteVideo",
         info: {
-            txt: "note-video"  
+            txt: "note-video"
         }
     }
 ];
