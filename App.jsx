@@ -9,6 +9,7 @@ export function App() {
         <Router>
             <header>
                 <h1>hhh</h1>
+                <h2>ttt</h2>
             </header>
 
             <main>
