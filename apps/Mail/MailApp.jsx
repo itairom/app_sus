@@ -4,6 +4,7 @@ import { } from './cmps/EmailDetails.jsx'
 import { } from './cmps/EmailFilter.jsx'
 import { } from './cmps/EmailList.jsx'
 import { } from './cmps/EmailStatus.jsx'
+import { EmailPreview} from './cmps/EmailPreview.jsx'
 
 
 export class MailApp extends React.Component {

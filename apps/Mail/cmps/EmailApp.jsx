@@ -1,27 +1,29 @@
 import { mailService } from '../services/mail-service.js'
+// import { } from './'
+import { EmailList } from './EmailList.jsx'
 
 export class EmailApp extends React.Component {
 
 
-    state ={
-
+    state = {
+        mails: null
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.loadMails()
     }
 
     loadMails = () => {
         mailService.query()
-            .then(notes => {
-                console.log(notes);
+            .then(mails => {
+                this.setState({ mails })
             })
     }
 
     render() {
-
+        if (!this.state.mails) return <h2>loading</h2>
         return (
-            <h2>mailsList</h2>
+            <EmailList mails={this.state.mails} />
 
         )
 
