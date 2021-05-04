@@ -2,12 +2,43 @@ import { utilService } from '../../../services/util-service.js'
 import { storageService } from '../../../services/storage-service.js'
 
 export const KeepService = {
-    query
+    query,
+    getNoteById,
+    saveNote
+    
 }
 
 function query() {
     return Promise.resolve(gNotes)
 }
+
+function getNoteById(NoteId) {
+    var note = gNotes.find(function (note) {
+        return noteId === note.id
+    })
+    return Promise.resolve(note)
+}
+
+function saveNote(note) {
+    return note.id ? _updateNote(note) : _addNote(note)
+}
+
+function _addNote(noteToAdd) {
+    var note = _createNote(noteToAdd.text)
+    gNotes.unshift(note)
+    // _saveNotesToStorage();
+    return Promise.resolve(note)
+}
+
+function _updateNote(noteToUpdate) {
+    var noteIdx = gNotes.findIndex(function (note) {
+        return note.id === noteToUpdate.id;
+    })
+    gNotes.splice(noteIdx, 1, noteToUpdate)
+    // _saveNotesToStorage();
+    return Promise.resolve(noteToUpdate)
+}
+
 
 
 
