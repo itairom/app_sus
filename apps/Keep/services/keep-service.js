@@ -4,8 +4,10 @@ import { storageService } from '../../../services/storage-service.js'
 export const KeepService = {
     query,
     getNoteById,
-    saveNote
-    
+    // saveNote
+    _addNote,
+    deleteNote
+
 }
 
 function query() {
@@ -24,10 +26,10 @@ function saveNote(note) {
 }
 
 function _addNote(noteToAdd) {
-    var note = _createNote(noteToAdd.text)
-    gNotes.unshift(note)
+    noteToAdd.id = utilService.makeId()
+    gNotes.unshift(noteToAdd)
     // _saveNotesToStorage();
-    return Promise.resolve(note)
+    return Promise.resolve(noteToAdd)
 }
 
 function _updateNote(noteToUpdate) {
@@ -39,12 +41,20 @@ function _updateNote(noteToUpdate) {
     return Promise.resolve(noteToUpdate)
 }
 
+function deleteNote(noteId) {
+    var noteIdx = gNotes.findIndex(function (note) {
+        return noteId === note.id
+    })
+    gNotes.splice(noteIdx, 1)
+    // _savenotesToStorage();
 
+    return Promise.resolve()
+}
 
 
 var gNotes = [
     {
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         type: "NoteText",
         isPinned: true,
         info: {
@@ -53,7 +63,7 @@ var gNotes = [
     },
 
     {
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         type: "NoteImg",
         info: {
             url: "http://some-img/me",
@@ -65,7 +75,7 @@ var gNotes = [
     },
 
     {
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         type: "NoteTodos",
         info: {
             label: "ToDos",
@@ -76,10 +86,10 @@ var gNotes = [
         }
     },
     {
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         type: "NoteVideo",
         info: {
-            txt: "note-video"  
+            txt: "note-video"
         }
     }
 ];

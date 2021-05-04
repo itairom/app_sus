@@ -1,9 +1,14 @@
 export class KeepAdd extends React.Component {
 
     state = {
-        typeNote:{
-            text: ''
-        }
+        note: {
+            type: "NoteText",
+            isPinned: false,
+            info: {
+                txt: ''
+            }
+        },
+        placeholder:'Enter your text here'
     }
 
     componentDidMount() {
@@ -12,23 +17,42 @@ export class KeepAdd extends React.Component {
 
     handleChange = ({ target }) => {
         const field = target.name
-        const value = (target.type === 'number') ? +target.value : target.value
+        const value = target.value
         this.setState(prevState => ({
-            car: {
-                ...prevState.typeNote,
-                [field]: value
+            note: {
+                ...prevState.note,
+                info:{
+                    ...prevState.note.info,
+                    [field]: value
+                }
             }
         }))
     }
 
+    changeInput = (type) => {
+        // switch
+    }
+
+    onAddNote=(ev)=>{
+        ev.preventDefault()
+        this.props.addNote(this.state.note)
+        console.log(this.state);
+    }
 
     render() {
-        const {text} = this.state.typeNote
+        const { text } = this.state.note
+        const { placeholder } = this.state
+
         return (
             <section className="note-add">
-                <input type="text" name="text" value={text} onChange={this.handleChange} />
+                <form onSubmit={this.onAddNote}>
+                <input type="text" name="txt" value={text} onChange={this.handleChange} placeholder={placeholder} />
+                </form>
                 <div>
-                    <div>logos</div>
+                    <div onClick={this.changeInput("noteText")}>text</div>
+                    <div onClick={this.changeInput}>image</div>
+                    <div onClick={this.changeInput}>video</div>
+                    <div onClick={this.changeInput}>todos</div>
                 </div>
 
             </section>

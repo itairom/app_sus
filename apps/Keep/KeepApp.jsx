@@ -11,22 +11,31 @@ export class KeepApp extends React.Component {
         this.loadNotes()
     }
 
-    loadNotes() {
+    loadNotes = () => {
         KeepService.query()
             .then(notes => {
-                console.log(notes);        
+                console.log(notes);
                 this.setState({ notes })
             })
-    } 
+    }
+
+    addNote = (note) => {
+        KeepService._addNote(note)
+        this.loadNotes()
+    }
+
+    // onDeleteNote=()=>{
+
+    // }
 
     render() {
         const { notes } = this.state
         if (!notes || !notes.length) return <div>Loading...</div>
         return (
             <section className="keep-app">
-                <KeepAdd/>
+                <KeepAdd addNote={this.addNote} />
                 <h2>Your Notes</h2>
-                <KeepList notes={notes}/>
+                <KeepList notes={notes} />
 
             </section>
         )
