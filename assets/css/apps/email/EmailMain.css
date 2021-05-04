@@ -9,6 +9,12 @@
     flex-direction: column;
 }
 
+.main-mail  li{
+    padding: 10px 0;
+    list-style: none;
+    cursor: pointer;
+}
+
 .card-preview {
     border-top: #e8eaed solid 1px;
     text-align: left;

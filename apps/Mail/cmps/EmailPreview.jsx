@@ -19,16 +19,21 @@ export class EmailPreview extends React.Component {
         this.setState({ isClicked: !this.state.isClicked })
     }
 
+    setRead=()=>{
+        this.setState({mail:this.state.mail.isRead=true})
+    }
+
     render() {
 
         if (!this.state.mail) return <h2>loading2</h2>
         const { mail } = this.state
         const { subject, body, isRead } = mail
-
+        console.log(isRead);
         return (
             <div className="card-preview" onClick={() => { this.toggleDetails() }}>
-                <h4 >{subject}</h4>
-                {this.state.isClicked && <EmailDetails mail={mail} />}
+                <li className={(!isRead ? 'bold' : '')}  >{subject}</li>
+                {/* <h4 className="bold"  >{subject}</h4> */}
+                { this.state.isClicked && <EmailDetails onClick={()=>{setRead() }} mail={mail} />}
                 {/* <Link to={`/mail/${mail.id}`}>Details</Link> */}
             </div>
         )

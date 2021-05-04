@@ -3,13 +3,15 @@ const { Route, Switch, Link } = ReactRouterDOM
 import { mailService } from '../services/mail-service.js'
 import { EmailList } from './EmailList.jsx'
 import { EmailCompose } from './EmailCompose.jsx'
+import { EmailFilter } from './EmailFilter.jsx'
 
 export class EmailApp extends React.Component {
 
 
     state = {
         mails: null,
-        isCompose: false
+        isCompose: false,
+        filterBy: ''
     }
 
     componentDidMount() {
@@ -17,7 +19,7 @@ export class EmailApp extends React.Component {
     }
 
     loadMails = () => {
-        mailService.query()
+        mailService.query(this.state.filterBy)
             .then(mails => {
                 this.setState({ mails })
             })
@@ -31,6 +33,7 @@ export class EmailApp extends React.Component {
         if (!this.state.mails) return <h2>loading</h2>
         return (
             <React.Fragment>
+                <EmailFilter filterBy={this.state.filterBy} />
                 {(this.state.isCompose) && <EmailCompose />}
                 {/* <h1 onClick={() => { this.toggleCompose() }} className="add-btn">
                     <Link to="/mail/compose">+ </Link>

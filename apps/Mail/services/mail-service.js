@@ -14,7 +14,7 @@ let gMails = [
     { id: utilService.makeId, subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
     { id: utilService.makeId, subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930594 },
     { id: utilService.makeId, subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
-    { id: utilService.makeId, subject: 'asdsdsdsdsd?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
+    { id: utilService.makeId, subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
 ]
 
 function _createMail(...args) {
@@ -22,11 +22,13 @@ function _createMail(...args) {
 }
 
 function query(filterBy) {
-    if (filterBy) {
+    if (!filterBy) return Promise.resolve(gMails)
+    const filteredMails = gMails.filter(mail => {
+        return mail.subject.toLowerCase().includes(filterBy.toLowerCase())
+    })
+    return Promise.resolve(filteredMails)
 
-    }
 
-    return Promise.resolve(gMails)
 }
 
 function _saveMail(mail) {

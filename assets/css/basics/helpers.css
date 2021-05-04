@@ -5,3 +5,8 @@
 .align-items {
     align-items: center;
 }
+
+.bold{
+    font-weight: bolder;
+    /* color: yellow; */
+}
