@@ -20,14 +20,20 @@ export class EmailFilter extends React.Component {
             }
         }))
     }
+
+    onFilter=(ev)=>{
+        ev.preventDefault()
+        this.props.onSetFilter(this.state.filterBy)
+    }
+
     render() {
 
 
         return (
-
-            <form className="mail-form flex" >
+            
+            <form className="mail-filter" onChange={this.onSetFilter} >
                 <label>subject
-    <input type="text" name="subject" value={this.state.filterBy} onChange={this.handleChange} />
+                <input type="text" name="subject" value={this.state.filterBy} onChange={this.handleChange} />
                 </label>
                 <button>Save</button>
             </form>
