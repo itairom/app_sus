@@ -6,16 +6,14 @@ import { MailApp } from './apps/Mail/MailApp.jsx'
 // import { Books } from './apps/Books/BookApp.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { Home } from './pages/Home.jsx'
-
+import { MainNav } from './cmps/MainNav.jsx'
 
 
 export function App() {
     return (
         <Router>
             <header>
-                <h1>hhh</h1>
-                <h2>ttt</h2>
-                <h2>hh</h2>
+                <MainNav />
             </header>
 
             <main>

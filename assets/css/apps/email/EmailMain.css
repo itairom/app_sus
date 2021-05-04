@@ -1,0 +1,12 @@
+.main-mail{
+    background-color: #202124;
+    color: #e8eaed;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+
+}
