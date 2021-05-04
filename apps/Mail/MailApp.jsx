@@ -1,5 +1,4 @@
 import { EmailApp} from './cmps/EmailApp.jsx'
-import { } from './cmps/EmailCompose.jsx'
 import { } from './cmps/EmailDetails.jsx'
 import { } from './cmps/EmailFilter.jsx'
 import { } from './cmps/EmailList.jsx'
@@ -23,7 +22,7 @@ export class MailApp extends React.Component {
 
         return (
             <section className="main-mail">
-                <h1>MailApp</h1>
+                <h1>Inbox</h1>
                 <EmailApp />
 
             </section>

@@ -1,3 +1,5 @@
+const { Link } = ReactRouterDOM
+
 import { EmailDetails } from './EmailDetails.jsx'
 
 export class EmailPreview extends React.Component {
@@ -14,7 +16,6 @@ export class EmailPreview extends React.Component {
     }
 
     toggleDetails = () => {
-        console.log(this.state.isClicked);
         this.setState({ isClicked: !this.state.isClicked })
     }
 
@@ -25,9 +26,10 @@ export class EmailPreview extends React.Component {
         const { subject, body, isRead } = mail
 
         return (
-            <div className="card-preview">
-                <h4 onClick={() => { this.toggleDetails() }}>{subject}</h4>
+            <div className="card-preview" onClick={() => { this.toggleDetails() }}>
+                <h4 >{subject}</h4>
                 {this.state.isClicked && <EmailDetails mail={mail} />}
+                {/* <Link to={`/mail/${mail.id}`}>Details</Link> */}
             </div>
         )
 

@@ -1,4 +1,4 @@
-.main-mail{
+.main-mail {
     background-color: #202124;
     color: #e8eaed;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -7,6 +7,26 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+}
 
+.card-preview {
+    border-top: #e8eaed solid 1px;
+    text-align: left;
+    margin-left: 10px;
+    cursor: pointer;
+}
 
+.add-btn {
+    display: block;
+    position: absolute;
+    background-color: red;
+    font-size: 2rem;
+    border-radius: 50%;
+    padding: 0 6px;
+    cursor: pointer;
+}
+
+.compose-mail > *{
+    flex-direction: column;
+    max-width: 50px;
 }
