@@ -9,7 +9,6 @@ export function App() {
         <Router>
             <header>
                 <h1>hhh</h1>
-                <h2>dsdsdasas</h2>
             </header>
 
             <main>
