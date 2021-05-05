@@ -19,6 +19,12 @@ export function NoteTodos({ note, deleteNote }) {
             <NoteToolBar deleteNote={deleteNote} note={note} />
         </section>
 
+
     )
 
 }
+
+// toggleLine = () => {
+//     this.setState({ isCrossed: !this.state.isCrossed })
+// }
+// <h1 className={this.state.isCrossed ? 'line-through' : ''} onClick={() => this.toggleLine()} >blaaa</h1>

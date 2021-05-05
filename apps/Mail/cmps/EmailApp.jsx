@@ -80,9 +80,6 @@ export class EmailApp extends React.Component {
             }, this.loadMails())
     }
 
-    toggleLine = () => {
-        this.setState({ isCrossed: !this.state.isCrossed })
-    }
 
     render() {
         if (!this.state.mails) return <h2>loading</h2>
@@ -97,7 +94,6 @@ export class EmailApp extends React.Component {
                     <EmailList onSetRead={this.onSetRead} onSaveReplay={this.onSaveReplay} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
 
                 </div>
-                <h1 className={this.state.isCrossed ? 'line-through' : ''} onClick={() => this.toggleLine()} >blaaa</h1>
             </React.Fragment>
         )
     }
