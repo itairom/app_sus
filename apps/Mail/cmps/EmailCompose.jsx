@@ -9,21 +9,13 @@ export class EmailCompose extends React.Component {
             subject: null,
             body: null,
             id: utilService.makeId(),
-            subject: null,
             isRead: false
         }
     }
     componentDidMount() {
     }
 
-    onSaveMail = (ev) => {
-        ev.preventDefault()
-        mailService._saveMail(this.state.mail)
-            .then(() => {
-                
-                // this.props.history.push('/mail')
-            })
-    }
+   
 
     handleChange = ({ target }) => {
         const field = target.name
@@ -43,16 +35,15 @@ export class EmailCompose extends React.Component {
 
         return (
             <div className="compose-mail flex">
-                <form className="mail-form flex" onSubmit={this.onSaveMail}>
+                <form className="mail-form flex" onSubmit={()=>{ this.props.onSaveMail(this.state.mail)}}>
                     <label>subject
                     <input type="text" name="subject" value={subject} onChange={this.handleChange} />
                     </label>
                     <label>body
                     <textarea type="text" name="body" value={body} onChange={this.handleChange} />
                     </label>
-                    <button>Save</button>
+                    <button>Send</button>
                 </form>
-
             </div>
         )
     }

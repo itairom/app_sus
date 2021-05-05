@@ -14,10 +14,8 @@ export class EmailFilter extends React.Component {
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
         this.setState(prevState => ({
-            mail: {
-                ...prevState.mail,
+                ...prevState,
                 [field]: value
-            }
         }))
     }
 
@@ -28,14 +26,13 @@ export class EmailFilter extends React.Component {
 
     render() {
 
-
+const {filterBy} = this.state
         return (
-            
-            <form className="mail-filter" onChange={this.onSetFilter} >
-                <label>subject
-                <input type="text" name="subject" value={this.state.filterBy} onChange={this.handleChange} />
+            <form className="mail-filter" onSubmit={this.onFilter} >
+                <label>Search
+                <input type="text" id="filterBy" name="filterBy" value={filterBy} onChange={this.handleChange} />
                 </label>
-                <button>Save</button>
+                <button>Search</button>
             </form>
         )
     }

@@ -1,21 +1,35 @@
 import { storageService } from '../../../services/storage-service.js'
 import { utilService } from '../../../services/util-service.js'
-
+let gSortBy = ''
 
 export const mailService = {
     query,
     getMailById,
     deleteMailById,
-    _saveMail,
-    _createMail
+    saveMail,
+    _createMail,
+    saveReplay,
+    countUnreadMails
 }
 
 let gMails = [
-    { id: utilService.makeId, subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-    { id: utilService.makeId, subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930594 },
-    { id: utilService.makeId, subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
-    { id: utilService.makeId, subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replays: [], subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replays: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replays: [], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replays: [], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
 ]
+
+// function getSortBy(sortBy) {
+//     gSortBy = sortBy
+// }
+
+function countUnreadMails() {
+    let unreadCounts = 0
+    for (const mail of gMails) {
+        mail.isRead ? '' : unreadCounts++
+    }
+    return Promise.resolve(unreadCounts)
+}
 
 function _createMail(...args) {
     console.log(args);
@@ -24,15 +38,23 @@ function _createMail(...args) {
 function query(filterBy) {
     if (!filterBy) return Promise.resolve(gMails)
     const filteredMails = gMails.filter(mail => {
-        return mail.subject.toLowerCase().includes(filterBy.toLowerCase())
+        return mail.subject.includes(filterBy)
     })
     return Promise.resolve(filteredMails)
 
 
 }
 
-function _saveMail(mail) {
-    console.log(mail);
+function saveReplay(replay) {
+    // let idx = replay.mailId
+    let idx = gMails.findIndex(mail => {
+        return replay.mailId === mail.id
+    })
+    gMails[idx].replays.push(replay)
+    return Promise.resolve(replay)
+}
+
+function saveMail(mail) {
     gMails.unshift(mail)
 
     console.log(gMails);

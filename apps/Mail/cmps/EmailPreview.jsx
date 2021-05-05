@@ -16,7 +16,10 @@ export class EmailPreview extends React.Component {
     }
 
     toggleDetails = () => {
-        this.setState({ isClicked: !this.state.isClicked })
+        event.stopPropagation()
+
+        // this.setState({ isClicked: !this.state.isClicked })
+        this.setState({ isClicked: true})
     }
 
     setRead=()=>{
@@ -28,12 +31,11 @@ export class EmailPreview extends React.Component {
         if (!this.state.mail) return <h2>loading2</h2>
         const { mail } = this.state
         const { subject, body, isRead } = mail
-        console.log(isRead);
         return (
             <div className="card-preview" onClick={() => { this.toggleDetails() }}>
                 <li className={(!isRead ? 'bold' : '')}  >{subject}</li>
                 {/* <h4 className="bold"  >{subject}</h4> */}
-                { this.state.isClicked && <EmailDetails onClick={()=>{setRead() }} mail={mail} />}
+                { this.state.isClicked && <EmailDetails onSaveReplay={this.props.onSaveReplay} onDeleteMail={this.props.onDeleteMail} onClick={()=>{setRead() }} mail={mail} />}
                 {/* <Link to={`/mail/${mail.id}`}>Details</Link> */}
             </div>
         )
