@@ -1,11 +1,19 @@
 .note-add{
     display: flex;
+    margin-block-end:50px
+
 }
 .note-add-buttons{
     display: flex;
 }
 
+.note-add-buttons img {
+    width: 40px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
 .note-add-buttons>* {
     margin-inline-start: 10px;
-
 }
+
