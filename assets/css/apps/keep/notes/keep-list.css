@@ -4,6 +4,12 @@
     padding: 10px 0;
 }
 
+.keep-list > * {
+    box-shadow: 0 0px 3px 2px #7e7d7d78;
+    padding: 10px;
+
+}
+
 .keep-list > *:not(:first-child) {
     margin-left: 20px;
 }

@@ -1,0 +1,11 @@
+.note-add{
+    display: flex;
+}
+.note-add-buttons{
+    display: flex;
+}
+
+.note-add-buttons>* {
+    margin-inline-start: 10px;
+
+}
