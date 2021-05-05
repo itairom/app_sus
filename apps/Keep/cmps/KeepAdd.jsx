@@ -8,7 +8,7 @@ export class KeepAdd extends React.Component {
                 txt: ''
             }
         },
-        placeholder: 'Enter your text here'
+        placeholder: 'Enter Text'
     }
 
     componentDidMount() {
@@ -29,25 +29,23 @@ export class KeepAdd extends React.Component {
         }))
     }
 
-    setPlaceholder=(text)=>{
-        // const { placeholder } = this.state
-        this.setState({placeholder:`Enter your ${text} here`})
+    setPlaceholder = (text) => {
+        this.setState({ placeholder: `Enter ${text}` })
     }
-    
+
     changeInput = (type) => {
-        
-        // console.log(type);
+
         switch (type) {
             case 'NoteText':
-                return this.setPlaceholder('jkjklhlj')
+                return this.setPlaceholder('Text')
             case 'NoteImg':
-                return 
+                return this.setPlaceholder('image url')
             case 'NoteTodos':
-                return 
+                return this.setPlaceholder('comma separated list')
             case 'NoteVideo':
-                return 
+                return this.setPlaceholder('video url')
             default:
-                return 
+                return
         }
     }
 
@@ -59,26 +57,26 @@ export class KeepAdd extends React.Component {
 
 
     render() {
-    const { text } = this.state.note
+        const { text, type } = this.state.note
         const { placeholder } = this.state
 
         return (
             <section className="note-add">
                 <form onSubmit={this.onAddNote}>
-                    <input type="text" name="txt" value={text} onChange={this.handleChange} placeholder={placeholder} />
+                    <input type={type} name="txt" value={text} onChange={this.handleChange} placeholder={placeholder} />
                 </form>
                 <div className="note-add-buttons">
-                    <div onClick={()=>this.changeInput("noteText")}>
-                        <img src="apps/Keep/assets/icons/a.png" alt=""/>
+                    <div onClick={() => this.changeInput("NoteText")}>
+                        <img src="apps/Keep/assets/icons/a.png" alt="" />
                     </div>
-                    <div onClick={()=>this.changeInput("noteImg")}>
-                    <img src="apps/Keep/assets/icons/photo.png" alt=""/>
+                    <div onClick={() => this.changeInput("NoteImg")}>
+                        <img src="apps/Keep/assets/icons/photo.png" alt="" />
                     </div>
-                    <div onClick={()=>this.changeInput("noteVideo")}>
-                    <img src="apps/Keep/assets/icons/youtube.png" alt=""/>
+                    <div onClick={() => this.changeInput("NoteVideo")}>
+                        <img src="apps/Keep/assets/icons/youtube.png" alt="" />
                     </div>
-                    <div onClick={()=>this.changeInput("noteTodos")}>
-                    <img src="apps/Keep/assets/icons/list.png" alt=""/>
+                    <div onClick={() => this.changeInput("NoteTodos")}>
+                        <img src="apps/Keep/assets/icons/list.png" alt="" />
                     </div>
                 </div>
 

@@ -29,15 +29,18 @@ export class KeepEdit extends React.Component {
     onUpdateNote = (ev) => {
         ev.preventDefault()
         this.props.updateNote(this.state.note)
+        this.setState({ isEdit: !this.state.isEdit })
     }
 
     render() {
-        const { isEdit: isUpdate, txt } = this.state
+        const { isEdit, txt } = this.state
         return (
             <section className="keep-edit">
-                <span onClick={() => this.toggleInputEdit()}>update-btn</span>
+                <span onClick={() => this.toggleInputEdit()}>
+                <img className="edit-btn" src="apps/Keep/assets/icons/edit.png" alt=""/>
+                </span>
                 <form onSubmit={this.onUpdateNote}>
-                    {isUpdate && <input type="text" name="txt" value={txt} onChange={this.handleChange} />}
+                    {isEdit && <input type="text" name="txt" value={txt} onChange={this.handleChange} placeholder={'Edit your note'} />}
                 </form>
             </section>
         )

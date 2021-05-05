@@ -3,3 +3,9 @@
     width: 100%;
     right: 0;
 }
+
+
+.keep-edit .edit-btn{
+    width: 20px;
+    margin: 0;
+}
