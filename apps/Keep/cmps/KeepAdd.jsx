@@ -29,14 +29,14 @@ export class KeepAdd extends React.Component {
         }))
     }
 
-    setPlaceholder=(type)=>{
-        const { placeholder } = this.state
-        this.setState({placeholder:`Enter your ${type} here`})
+    setPlaceholder=(text)=>{
+        // const { placeholder } = this.state
+        this.setState({placeholder:`Enter your ${text} here`})
     }
     
     changeInput = (type) => {
         
-        console.log(type);
+        // console.log(type);
         switch (type) {
             case 'NoteText':
                 return this.setPlaceholder('jkjklhlj')
@@ -68,10 +68,18 @@ export class KeepAdd extends React.Component {
                     <input type="text" name="txt" value={text} onChange={this.handleChange} placeholder={placeholder} />
                 </form>
                 <div className="note-add-buttons">
-                    <div onClick={()=>this.changeInput("noteText")}>text</div>
-                    <div onClick={()=>this.changeInput("noteImg")}>image</div>
-                    <div onClick={()=>this.changeInput("noteVideo")}>video</div>
-                    <div onClick={()=>this.changeInput("noteTodos")}>todos</div>
+                    <div onClick={()=>this.changeInput("noteText")}>
+                        <img src="apps/Keep/assets/icons/a.png" alt=""/>
+                    </div>
+                    <div onClick={()=>this.changeInput("noteImg")}>
+                    <img src="apps/Keep/assets/icons/photo.png" alt=""/>
+                    </div>
+                    <div onClick={()=>this.changeInput("noteVideo")}>
+                    <img src="apps/Keep/assets/icons/youtube.png" alt=""/>
+                    </div>
+                    <div onClick={()=>this.changeInput("noteTodos")}>
+                    <img src="apps/Keep/assets/icons/list.png" alt=""/>
+                    </div>
                 </div>
 
             </section>
