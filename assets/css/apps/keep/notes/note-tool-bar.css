@@ -1,0 +1,6 @@
+.note-tool-bar{
+display: flex;
+justify-content: space-around;
+margin-block-start: auto;
+
+}

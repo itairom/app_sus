@@ -1,0 +1,5 @@
+.keep-edit input{
+    position: absolute;
+    width: 100%;
+    right: 0;
+}

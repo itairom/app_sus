@@ -31,22 +31,23 @@ function saveNote(note) {
 
 function _addNote(noteToAdd) {
     noteToAdd.id = utilService.makeId()
+    console.log(noteToAdd);
     gNotes.unshift(noteToAdd)
     _saveNotesToStorage();
     return Promise.resolve(noteToAdd)
 }
 
 function _updateNote(noteToUpdate) {
-    var noteIdx = gNotes.findIndex(function (note) {
+    var noteIdx = gNotes.findIndex((note)=> {
         return note.id === noteToUpdate.id;
     })
     gNotes.splice(noteIdx, 1, noteToUpdate)
-    // _saveNotesToStorage();
+    _saveNotesToStorage();
     return Promise.resolve(noteToUpdate)
 }
 
 function deleteNote(noteId) {
-    var noteIdx = gNotes.findIndex(function (note) {
+    var noteIdx = gNotes.findIndex((note)=> {
         return noteId === note.id
     })
     gNotes.splice(noteIdx, 1)
@@ -111,7 +112,18 @@ function _defaultNotes() {
             info: {
                 txt: "note-video"
             }
-        }
+        },
+        {
+            id: utilService.makeId(),
+            type: "NoteImg",
+            info: {
+                url: "https://images.pexels.com/photos/7678410/pexels-photo-7678410.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                title: "Me playing Mi"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
     ];
 
 }

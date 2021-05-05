@@ -5,16 +5,15 @@ import { NoteVideo } from './notes/NoteVideo.jsx'
 
 export function KeepPreview({ note, deleteNote, updateNote }) {
 
-
     switch (note.type) {
         case 'NoteText':
             return <NoteTxt note={note} deleteNote={deleteNote} updateNote={updateNote} />
         case 'NoteImg':
-            return <NoteImg note={note} deleteNote={deleteNote} />
+            return <NoteImg note={note} deleteNote={deleteNote} updateNote={updateNote} />
         case 'NoteTodos':
-            return <NoteTodos note={note} deleteNote={deleteNote} />
+            return <NoteTodos note={note} deleteNote={deleteNote} updateNote={updateNote} />
         case 'NoteVideo':
-            return <NoteVideo note={note} deleteNote={deleteNote} />
+            return <NoteVideo note={note} deleteNote={deleteNote} updateNote={updateNote} />
         default:
             return <p>couldn't find note</p>
     }

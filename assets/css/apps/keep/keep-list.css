@@ -5,8 +5,11 @@
 }
 
 .keep-list > * {
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 0px 3px 2px #7e7d7d78;
     padding: 10px;
+    position: relative;
 
 }
 

@@ -1,3 +1,5 @@
+import {NoteToolBar} from './NoteToolBar.jsx'
+
 export function NoteTodos({note,deleteNote}){
 
     return(
@@ -14,7 +16,7 @@ export function NoteTodos({note,deleteNote}){
                 
                 
             })}
-            <span onClick={() => deleteNote(note.id)}>X</span>
+            <NoteToolBar deleteNote={deleteNote} note={note}/>
         </section>
 
     )

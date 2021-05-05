@@ -25,7 +25,7 @@ export class KeepApp extends React.Component {
     }
 
     onUpdateNote=(note)=>{
-        KeepService.onUpdate(note)
+        KeepService. _updateNote(note)
         this.loadNotes()
     }
     
