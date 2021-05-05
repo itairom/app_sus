@@ -29,8 +29,26 @@ export class KeepAdd extends React.Component {
         }))
     }
 
+    setPlaceholder=(type)=>{
+        const { placeholder } = this.state
+        this.setState({placeholder:`Enter your ${type} here`})
+    }
+    
     changeInput = (type) => {
-        // switch
+        
+        console.log(type);
+        switch (type) {
+            case 'NoteText':
+                return this.setPlaceholder('jkjklhlj')
+            case 'NoteImg':
+                return 
+            case 'NoteTodos':
+                return 
+            case 'NoteVideo':
+                return 
+            default:
+                return 
+        }
     }
 
     onAddNote = (ev) => {
@@ -38,6 +56,7 @@ export class KeepAdd extends React.Component {
         this.props.addNote(this.state.note)
         console.log(this.state);
     }
+
 
     render() {
     const { text } = this.state.note
@@ -48,11 +67,11 @@ export class KeepAdd extends React.Component {
                 <form onSubmit={this.onAddNote}>
                     <input type="text" name="txt" value={text} onChange={this.handleChange} placeholder={placeholder} />
                 </form>
-                <div>
-                    <div onClick={this.changeInput("noteText")}>text</div>
-                    <div onClick={this.changeInput}>image</div>
-                    <div onClick={this.changeInput}>video</div>
-                    <div onClick={this.changeInput}>todos</div>
+                <div className="note-add-buttons">
+                    <div onClick={()=>this.changeInput("noteText")}>text</div>
+                    <div onClick={()=>this.changeInput("noteImg")}>image</div>
+                    <div onClick={()=>this.changeInput("noteVideo")}>video</div>
+                    <div onClick={()=>this.changeInput("noteTodos")}>todos</div>
                 </div>
 
             </section>

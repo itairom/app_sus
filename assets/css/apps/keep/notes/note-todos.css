@@ -1,0 +1,8 @@
+.todo-container{
+    display: flex;
+}
+
+
+.todo-done {
+    text-decoration-line: line-through;
+}

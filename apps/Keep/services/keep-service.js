@@ -6,8 +6,8 @@ export const KeepService = {
     getNoteById,
     // saveNote
     _addNote,
+    _updateNote,
     deleteNote
-
 }
 
 function query() {
@@ -66,7 +66,7 @@ var gNotes = [
         id: utilService.makeId(),
         type: "NoteImg",
         info: {
-            url: "http://some-img/me",
+            url: "https://cdn.pixabay.com/photo/2016/02/22/10/06/hedgehog-1215140_960_720.jpg",
             title: "Me playing Mi"
         },
         style: {

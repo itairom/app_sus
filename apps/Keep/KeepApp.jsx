@@ -23,8 +23,13 @@ export class KeepApp extends React.Component {
         KeepService._addNote(note)
         this.loadNotes()
     }
+
+    onUpdateNote=(note)=>{
+        KeepService.onUpdate(note)
+        this.loadNotes()
+    }
     
-    onDeleteNote=()=>{
+    onDeleteNote=(noteId)=>{
         KeepService.deleteNote(noteId)
         this.loadNotes()
     }
@@ -36,7 +41,7 @@ export class KeepApp extends React.Component {
             <section className="keep-app">
                 <KeepAdd addNote={this.addNote} />
                 <h2>Your Notes</h2>
-                <KeepList notes={notes} />
+                <KeepList notes={notes} deleteNote={this.onDeleteNote} updateNote={this.onUpdateNote} />
 
             </section>
         )

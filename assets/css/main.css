@@ -9,4 +9,11 @@
 
 
 /* KEEP */
-@import '../css/apps/keep/notes/keep-list.css' 
+@import '../css/apps/keep/keep-app.css';
+@import '../css/apps/keep/notes/keep-list.css';
+@import '../css/apps/keep/notes/note-add.css';
+@import '../css/apps/keep/notes/note-img.css';
+@import '../css/apps/keep/notes/note-todos.css';
+@import '../css/apps/keep/notes/note-txt.css';
+@import '../css/apps/keep/notes/note-video.css';
+
