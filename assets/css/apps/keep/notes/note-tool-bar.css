@@ -1,6 +1,12 @@
-.note-tool-bar{
-display: flex;
-justify-content: space-around;
-margin-block-start: auto;
+.note-tool-bar {
+    display: flex;
+    justify-content: space-around;
+    margin-block-start: auto;
+    align-items: center;
+    cursor: pointer;
 
+}
+
+.note-tool-bar .delete-btn{
+    width: 25px;
 }

@@ -102,7 +102,7 @@ function _defaultNotes() {
                 label: "ToDos",
                 todos: [
                     { txt: "Do that", doneAt: null },
-                    { txt: "Do this", doneAt: 187111111 }
+                    { txt: "Do this", doneAt: Date.now() }
                 ]
             }
         },

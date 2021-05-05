@@ -10,8 +10,10 @@ export class NoteToolBar extends React.Component {
         return (
             <section className="note-tool-bar">
                 <div><KeepEdit updateNote={updateNote} note={note}/></div>
-                <span className="note-delete">toll bar</span>
-                <span onClick={() => deleteNote(note.id)}>X</span>
+                <span className="note-delete"></span>
+                <span onClick={() => deleteNote(note.id)}>
+                <img className="delete-btn" src="apps/Keep/assets/icons/delete.png" alt=""/>
+                </span>
             </section>
 
         )
