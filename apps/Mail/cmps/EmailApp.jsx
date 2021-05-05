@@ -4,7 +4,7 @@ import { mailService } from '../services/mail-service.js'
 import { EmailList } from './EmailList.jsx'
 import { EmailCompose } from './EmailCompose.jsx'
 import { EmailFilter } from './EmailFilter.jsx'
-import { EmailFilter } from './EmailFilter.jsx'
+import { EmailCounts } from './EmailCounts.jsx'
 
 export class EmailApp extends React.Component {
 
@@ -23,7 +23,9 @@ export class EmailApp extends React.Component {
     onCountUnreadMails() {
 
         mailService.countUnreadMails()
-            .then()
+            .then((countedMails) =>
+                this.setState({ countUnreadMails: countedMails })
+            )
     }
 
 
