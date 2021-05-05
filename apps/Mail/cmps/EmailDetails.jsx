@@ -13,7 +13,6 @@ export class EmailDetails extends React.Component {
         isReply: false
     }
     componentDidMount() {
-        console.log(this.props);
         this.setState({ mail: this.props.mail })
     }
 

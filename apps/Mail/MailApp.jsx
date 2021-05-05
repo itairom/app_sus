@@ -24,6 +24,7 @@ export class MailApp extends React.Component {
             <section className="main-app">
                 <EmailApp />
 
+
             </section>
         )
     }

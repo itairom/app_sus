@@ -10,3 +10,7 @@
     font-weight: bolder;
     /* color: yellow; */
 }
+
+.line-through{
+    text-decoration: line-through;
+}

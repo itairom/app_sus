@@ -23,8 +23,8 @@ export function App() {
                 <Switch>
                     {/* <Route component={Books} path="/books" /> */}
                     <Route component={EmailReplaySubmit} path="/mail/:id/reply" />
-                    <Route component={EmailCompose} path="/mail/:id/compose" />
                     <Route component={EmailDetails} path="/mail/:id" />
+                    <Route component={EmailCompose} path="/mail/compose" />
                     <Route component={MailApp} path="/mail" />
                     <Route component={KeepApp} path="/keep" />
                     <Route component={AboutUs} path="/about" />

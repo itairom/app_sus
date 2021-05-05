@@ -1,6 +1,5 @@
 const { Link, Route } = ReactRouterDOM
 
-
 import { EmailDetails } from './EmailDetails.jsx'
 import { LongTxt } from '../cmps/util/LongTxt.jsx'
 
@@ -10,7 +9,6 @@ export class EmailPreview extends React.Component {
         mail: null,
         visibility: null,
         isClicked: false
-
     }
 
     componentDidMount() {
@@ -19,16 +17,15 @@ export class EmailPreview extends React.Component {
 
     toggleDetails = (ev) => {
         ev.stopPropagation()
-
         this.setState({ isClicked: !this.state.isClicked })
-        // this.setState({ isClicked: true})
+        this.toggleRead(ev)
     }
 
-    setRead = (ev) => {
 
-        this.setState(prevState => ({
+    toggleRead = (ev) => {
+        ev.preventDefault()
+        this.props.onSetRead(this.state.mail.id)
 
-        }))
     }
 
     render() {
@@ -43,13 +40,12 @@ export class EmailPreview extends React.Component {
                 {/* <Route component={EmailDetails} path='/mail/:mailId' /> */}
 
                 <li onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
-                {/* <Link to={`/mail/${id}`}> */}
+                    {/* <Link to={`/mail/${id}`}> */}
                     <LongTxt text={subject} />
-                {/* </Link> */}
+                    {/* </Link> */}
                 </li>
 
-                    {this.state.isClicked && <EmailDetails onSaveReplay={this.props.onSaveReplay} onDeleteMail={this.props.onDeleteMail} onClick={(ev) => { setRead(ev) }} mail={mail} />}
-
+                {this.state.isClicked && <EmailDetails onSaveReplay={this.props.onSaveReplay} onDeleteMail={this.props.onDeleteMail} mail={mail} />}
             </div>
         )
 

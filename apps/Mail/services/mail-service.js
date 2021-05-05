@@ -9,7 +9,8 @@ export const mailService = {
     saveMail,
     _createMail,
     saveReplay,
-    countUnreadMails
+    countUnreadMails,
+    setRead
 }
 
 let gMails = [
@@ -22,6 +23,14 @@ let gMails = [
 // function getSortBy(sortBy) {
 //     gSortBy = sortBy
 // }
+
+function setRead(mailId) {
+    let mailIdx = gMails.findIndex(mail => {
+        return mailId === mail.id
+    })
+    gMails[mailIdx].isRead = true
+    return Promise.resolve(mailId)
+}
 
 function countUnreadMails() {
     let unreadCounts = 0
