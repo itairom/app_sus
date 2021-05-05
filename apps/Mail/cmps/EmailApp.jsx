@@ -12,7 +12,7 @@ export class EmailApp extends React.Component {
         countUnreadMails: 0,
         filterBy: {
             search: '',
-            read: true
+            read: false
         }
     }
 
@@ -51,9 +51,7 @@ export class EmailApp extends React.Component {
                 ...prevState.filterBy,
                 search
             }
-        })
-
-            , this.loadMails)
+        }), this.loadMails)
     }
 
     onDeleteMail = (mailId) => {
@@ -63,16 +61,19 @@ export class EmailApp extends React.Component {
             }, this.loadMails())
     }
 
-    onSaveMail = (mail,ev) => {
+    onSaveMail = (mail, ev) => {
+        ev.stopPropagation()
         ev.preventDefault()
+
+        console.log('d');
         mailService.saveMail(mail)
             .then(() => {
-                this.props.history.push('/mail')
+                // this.props.history.push('/mail')
             }, this.loadMails())
     }
 
-    onSaveReplay = (replay) => {
-        mailService.saveReplay(replay)
+    onSaveReply = (reply) => {
+        mailService.saveReply(reply)
             .then(() => {
                 // this.props.history.push('/mail')
             }, this.loadMails())
@@ -82,17 +83,41 @@ export class EmailApp extends React.Component {
     //     this.setState({ isCrossed: !this.state.isCrossed })
     // }
 
+    toggleRead = () => {
+        this.setState(prevState => ({
+            filterBy: {
+                ...prevState.filterBy,
+                read: !prevState.filterBy.read
+            }
+        }),this.loadMails)
+    }
+
     render() {
         if (!this.state.mails) return <h2>loading</h2>
+        console.log('render');
         return (
             <React.Fragment>
-                <h1 onClick={() => { this.toggleCompose() }}  className="add-btn">Compose</h1>
+
+                <form>
+                    <label>
+                        Unread:
+                    <input
+                            name="toggleUnread"
+                            type="checkbox"
+                            checked={this.state.filterBy.read}
+                            onChange={() => this.toggleRead()} />
+                    </label>
+                </form>
+
+
+                <h1 onClick={() => { this.toggleCompose() }} className="add-btn">Compose</h1>
                 <div className="main-mail" >
+                    {/* <div className="toggle-read"></div> */}
+
                     <div className="unread-counts">{this.state.countUnreadMails}</div>
                     <EmailFilter onSetFilter={this.onSetFilter} />
                     {(this.state.isCompose) && <EmailCompose toggleCompose={this.toggleCompose} onSaveMail={this.onSaveMail} />}
-                    <EmailList onSetRead={this.onSetRead} onSaveReplay={this.onSaveReplay} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
-
+                    <EmailList onSetRead={this.onSetRead} onSaveReply={this.onSaveReply} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
                 </div>
             </React.Fragment>
         )

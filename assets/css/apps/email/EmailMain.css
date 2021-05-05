@@ -25,6 +25,24 @@
     cursor: pointer;
 }
 
+.reply-container {
+    position: fixed;
+    width: 300px;
+    /* height: 300px; */
+    bottom: 0;
+    right: 100px;
+    background-color: #5f6368;
+}
+
+.reply-container>* {
+    display: flex;
+    flex-direction: column;
+}
+
+.reply-form textarea{
+    height: 200px;
+    width: 300px;}
+
 .card-preview {
     border-top: #e8eaed solid 1px;
     text-align: left;
@@ -86,14 +104,14 @@
     padding-right: 0;
 }
 
-.send-btn{
+.send-btn {
     align-items: center;
     display: inline-flex;
     justify-content: center;
     outline: none;
     position: relative;
     z-index: 0;
-    font-family: 'Google Sans', Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     font-size: .875rem;
     letter-spacing: .25px;
     background: none;
@@ -110,7 +128,7 @@
     color: #fff;
     border: none;
     width: fit-content;
-    margin: 5px 5px ;
+    margin: 5px 5px;
 }
 
 .mail-filter {

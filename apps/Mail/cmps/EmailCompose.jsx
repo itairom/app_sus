@@ -1,4 +1,3 @@
-import { mailService } from '../services/mail-service.js'
 import { utilService } from '../../../services/util-service.js'
 
 
@@ -15,8 +14,6 @@ export class EmailCompose extends React.Component {
     componentDidMount() {
         console.log(this.props);
     }
-
-   
 
     handleChange = ({ target }) => {
         const field = target.name
@@ -44,7 +41,7 @@ export class EmailCompose extends React.Component {
                     <label>
                     <textarea type="text" name="body" value={body} onChange={this.handleChange} />
                     </label>
-                    <button  onClick={()=>{this.props.toggleCompose()}} className="send-btn" >Send</button>
+                    <button type="button" onClick={()=>{this.props.toggleCompose()}} className="send-btn" >Send</button>
                 </form>
             </div>
         )
