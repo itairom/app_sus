@@ -1,10 +1,8 @@
 const { Route, Switch, Link } = ReactRouterDOM
-// import React from 'react'
 import { mailService } from '../services/mail-service.js'
 import { EmailList } from './EmailList.jsx'
 import { EmailCompose } from './EmailCompose.jsx'
 import { EmailFilter } from './EmailFilter.jsx'
-// import { EmailCounts } from './EmailCounts.jsx'
 
 export class EmailApp extends React.Component {
 
@@ -16,7 +14,6 @@ export class EmailApp extends React.Component {
             search: '',
             read: true
         }
-        , isCrossed: false
     }
 
     componentDidMount() {
@@ -66,7 +63,8 @@ export class EmailApp extends React.Component {
             }, this.loadMails())
     }
 
-    onSaveMail = (mail) => {
+    onSaveMail = (mail,ev) => {
+        ev.preventDefault()
         mailService.saveMail(mail)
             .then(() => {
                 this.props.history.push('/mail')
@@ -80,24 +78,22 @@ export class EmailApp extends React.Component {
             }, this.loadMails())
     }
 
-    toggleLine = () => {
-        this.setState({ isCrossed: !this.state.isCrossed })
-    }
+    // toggleLine = () => {
+    //     this.setState({ isCrossed: !this.state.isCrossed })
+    // }
 
     render() {
         if (!this.state.mails) return <h2>loading</h2>
         return (
             <React.Fragment>
-                <h1 onClick={() => { this.toggleCompose() }} className="add-btn">Compose</h1>
+                <h1 onClick={() => { this.toggleCompose() }}  className="add-btn">Compose</h1>
                 <div className="main-mail" >
                     <div className="unread-counts">{this.state.countUnreadMails}</div>
                     <EmailFilter onSetFilter={this.onSetFilter} />
-                    {(this.state.isCompose) && <EmailCompose onSaveMail={this.onSaveMail} />}
-                    <Link to='/mail/compose'>Link</Link>
+                    {(this.state.isCompose) && <EmailCompose toggleCompose={this.toggleCompose} onSaveMail={this.onSaveMail} />}
                     <EmailList onSetRead={this.onSetRead} onSaveReplay={this.onSaveReplay} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
 
                 </div>
-                <h1 className={this.state.isCrossed ? 'line-through' : ''} onClick={() => this.toggleLine()} >blaaa</h1>
             </React.Fragment>
         )
     }

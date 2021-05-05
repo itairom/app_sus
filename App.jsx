@@ -3,13 +3,12 @@ const { Route, Switch, Link } = ReactRouterDOM
 
 import { KeepApp } from './apps/Keep/KeepApp.jsx'
 import { MailApp } from './apps/Mail/MailApp.jsx'
-// import { Books } from './apps/Books/BookApp.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { Home } from './pages/Home.jsx'
 import { MainNav } from './cmps/MainNav.jsx'
 import { EmailDetails } from './apps/Mail/cmps/EmailDetails.jsx'
 import { EmailCompose } from './apps/Mail/cmps/EmailCompose.jsx'
-import { EmailReplaySubmit } from './apps/Mail/cmps/EmailReplaySubmit'
+import { EmailReplySubmit } from './apps/Mail/cmps/EmailReplySubmit.jsx'
 
 
 export function App() {
@@ -22,7 +21,7 @@ export function App() {
             <main>
                 <Switch>
                     {/* <Route component={Books} path="/books" /> */}
-                    <Route component={EmailReplaySubmit} path="/mail/:id/reply" />
+                    <Route component={EmailReplySubmit} path="/mail/reply/:id" />
                     <Route component={EmailDetails} path="/mail/:id" />
                     <Route component={EmailCompose} path="/mail/compose" />
                     <Route component={MailApp} path="/mail" />

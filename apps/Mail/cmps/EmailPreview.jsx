@@ -39,13 +39,13 @@ export class EmailPreview extends React.Component {
 
                 {/* <Route component={EmailDetails} path='/mail/:mailId' /> */}
 
-                <li onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
+             {!this.state.isClicked&&  <li onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
                     {/* <Link to={`/mail/${id}`}> */}
                     <LongTxt text={subject} />
                     {/* </Link> */}
-                </li>
+                </li>}
 
-                {this.state.isClicked && <EmailDetails onSaveReplay={this.props.onSaveReplay} onDeleteMail={this.props.onDeleteMail} mail={mail} />}
+                {this.state.isClicked && <EmailDetails toggleDetails={this.toggleDetails} onSaveReplay={this.props.onSaveReplay} onDeleteMail={this.props.onDeleteMail} mail={mail} />}
             </div>
         )
 

@@ -8,13 +8,13 @@ export class LongTxt extends React.Component {
     }
     render() {
         const { isLongShown } = this.state
-        const isOver100 = (this.props.text.length > 50) ? true : false;
-        let shortTxt = this.props.text.slice(0, 50)
-        if (isOver100) shortTxt += '...'
+        const isOver70 = (this.props.text.length > 70) ? true : false;
+        let shortTxt = this.props.text.slice(0, 70)
+        if (isOver70) shortTxt += '...'
         return <section>
             <p>
                 <span>{isLongShown ? this.props.text : shortTxt}</span>
-                {isOver100 && <span className="txt-show-btn" onClick={this.onToggleShow}>{isLongShown ? 'Show Less' : ''}</span>}
+                {isOver70 && <span className="txt-show-btn" onClick={this.onToggleShow}>{isLongShown ? 'Show Less' : 'Shoe More'}</span>}
             </p>
         </section>
     }

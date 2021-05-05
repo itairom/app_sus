@@ -14,15 +14,18 @@ export const mailService = {
 }
 
 let gMails = [
-    { id: utilService.makeId(), replays: [], subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-    { id: utilService.makeId(), replays: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930594 },
-    { id: utilService.makeId(), replays: [], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
-    { id: utilService.makeId(), replays: [], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replys: ['we are always delighted to announce our latest innovative'], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replys: ['The confirmation time for order 3009157721040698 has ended. If you still '], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replys: ['we are always delighted to announce our latest innovative'], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replys: ['The confirmation time for order 3009157721040698 has ended. If you still '], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replys: ['we are always delighted to announce our latest innovative'], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replas: [], subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
+    { id: utilService.makeId(), replys: ['The confirmation time for order 3009157721040698 has ended. If you still '], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
 ]
 
-// function getSortBy(sortBy) {
-//     gSortBy = sortBy
-// }
+
 
 function setRead(mailId) {
     let mailIdx = gMails.findIndex(mail => {

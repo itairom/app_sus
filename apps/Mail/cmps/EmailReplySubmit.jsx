@@ -1,6 +1,6 @@
 
 
-export class EmailReplaySubmit extends React.Component {
+export class EmailReplySubmit extends React.Component {
 
     state = {
         replay: {
@@ -32,7 +32,6 @@ export class EmailReplaySubmit extends React.Component {
 
     render() {
 
-
         const { subject,mailId } = this.state.replay
         return (
             <form className="replay-form flex" onSubmit={() => { this.props.onSaveReplay(this.state.replay) }}>
@@ -43,6 +42,4 @@ export class EmailReplaySubmit extends React.Component {
             </form>
         )
     }
-
-
 }
