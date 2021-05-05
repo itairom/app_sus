@@ -21,7 +21,6 @@ export class EmailApp extends React.Component {
     }
 
     onCountUnreadMails() {
-
         mailService.countUnreadMails()
             .then((countedMails) =>
                 this.setState({ countUnreadMails: countedMails })
@@ -74,7 +73,7 @@ export class EmailApp extends React.Component {
         if (!this.state.mails) return <h2>loading</h2>
         return (
             <React.Fragment>
-
+                <EmailCounts />
                 <EmailFilter onSetFilter={this.onSetFilter} />
                 {(this.state.isCompose) && <EmailCompose onSaveMail={this.onSaveMail} />}
                 {/* <h1 onClick={() => { this.toggleCompose() }} className="add-btn">
