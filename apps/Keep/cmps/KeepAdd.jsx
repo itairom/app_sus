@@ -8,7 +8,7 @@ export class KeepAdd extends React.Component {
                 txt: ''
             }
         },
-        placeholder:'Enter your text here'
+        placeholder: 'Enter your text here'
     }
 
     componentDidMount() {
@@ -21,7 +21,7 @@ export class KeepAdd extends React.Component {
         this.setState(prevState => ({
             note: {
                 ...prevState.note,
-                info:{
+                info: {
                     ...prevState.note.info,
                     [field]: value
                 }
@@ -33,20 +33,20 @@ export class KeepAdd extends React.Component {
         // switch
     }
 
-    onAddNote=(ev)=>{
+    onAddNote = (ev) => {
         ev.preventDefault()
         this.props.addNote(this.state.note)
         console.log(this.state);
     }
 
     render() {
-        const { text } = this.state.note
+    const { text } = this.state.note
         const { placeholder } = this.state
 
         return (
             <section className="note-add">
                 <form onSubmit={this.onAddNote}>
-                <input type="text" name="txt" value={text} onChange={this.handleChange} placeholder={placeholder} />
+                    <input type="text" name="txt" value={text} onChange={this.handleChange} placeholder={placeholder} />
                 </form>
                 <div>
                     <div onClick={this.changeInput("noteText")}>text</div>
