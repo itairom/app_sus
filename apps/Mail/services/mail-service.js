@@ -35,22 +35,18 @@ function _createMail(...args) {
 }
 
 function query(search, read) {
-    let readFilterd;
-    if (read) {
-         readFilterd = gMails.map(mail => {
-            return mail.isRead===read  })
-    }
-
-    console.log(readFilterd);
+    // let readFilterd;
+    // if (read) {
+    //      readFilterd = gMails.map(mail => {
+    //         return mail.isRead===read  })
+    // }
 
     if (!search) return Promise.resolve(gMails)
     // gMails.sort((a, b) => a.subject.toLowerCase() - b.subject.toLowerCase())
 
-
     const filteredMails = gMails.filter(mail => {
         return mail.subject.toLowerCase().includes(search.toLowerCase())
     })
-
 
     return Promise.resolve(filteredMails)
 }

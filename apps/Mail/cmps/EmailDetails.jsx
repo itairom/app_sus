@@ -1,7 +1,8 @@
-// import React from "react";
+
 import { mailService } from '../services/mail-service.js'
 import { EmailReplaySubmit } from './EmailReplaySubmit.jsx'
 import { EmailReplayList } from './EmailReplayList.jsx'
+
 
 
 export class EmailDetails extends React.Component {
@@ -9,16 +10,18 @@ export class EmailDetails extends React.Component {
     state = {
         mail: null,
         isClicked: null,
-        isReplay: false
+        isReply: false
     }
     componentDidMount() {
+        console.log(this.props);
         this.setState({ mail: this.props.mail })
     }
 
-    toggleReplay = () => {
-        event.stopPropagation()
+    
+    toggleReply = (ev) => {
+        ev.stopPropagation()
         this.setState((prevState) => {
-            return { isReplay: !prevState.iisReplay }
+            return { isReply: !prevState.isReply }
         })
     }
 
@@ -30,14 +33,22 @@ export class EmailDetails extends React.Component {
 
         return (
             <React.Fragment>
-                <h1 className="mail-subject">{subject}</h1>
-                <p className="mail-body">{body}</p>
-                <h4 onClick={() => { this.props.onDeleteMail(id) }} >Delete</h4>
-                <h4 onClick={() => { this.toggleReplay() }}>Re</h4>
-                { (this.state.isReplay) &&<EmailReplayList replays={replays} />}
-                {this.state.isReplay && <EmailReplaySubmit id={id} onSaveReplay={this.props.onSaveReplay} />}
+                {!this.props.isReply && <section className="mail-details">
+                    <h1 className="mail-subject">{subject}</h1>
+                    <p className="mail-body">{body}</p>
+                    <h4 onClick={() => { this.props.onDeleteMail(id) }} >Delete</h4>
+                    
+                    {/* <Link to={`/mail/${id}/reply`}>Rep</Link> */}
+                    <h4 onClick={(ev) => { this.toggleReply(ev) }}>Reply</h4>
+                    {/* { (this.state.isReply) &&<EmailReplayList replays={replays} />} */}
+
+
+                    
+                    {/* {this.state.isReply && <EmailReplaySubmit  onSaveReplay={this.props.onSaveReplay} />} */}
+                </section >}
+
+
             </React.Fragment>
         )
-
     }
 }

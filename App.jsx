@@ -7,8 +7,10 @@ import { MailApp } from './apps/Mail/MailApp.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { Home } from './pages/Home.jsx'
 import { MainNav } from './cmps/MainNav.jsx'
-import {EmailDetails} from './apps/Mail/cmps/EmailDetails.jsx'
-import {EmailCompose} from './apps/Mail/cmps/EmailCompose.jsx'
+import { EmailDetails } from './apps/Mail/cmps/EmailDetails.jsx'
+import { EmailCompose } from './apps/Mail/cmps/EmailCompose.jsx'
+import { EmailReplaySubmit } from './apps/Mail/cmps/EmailReplaySubmit'
+
 
 export function App() {
     return (
@@ -20,8 +22,9 @@ export function App() {
             <main>
                 <Switch>
                     {/* <Route component={Books} path="/books" /> */}
+                    <Route component={EmailReplaySubmit} path="/mail/:id/reply" />
+                    <Route component={EmailCompose} path="/mail/:id/compose" />
                     <Route component={EmailDetails} path="/mail/:id" />
-                    <Route component={EmailCompose} path="/mail/compose" />
                     <Route component={MailApp} path="/mail" />
                     <Route component={KeepApp} path="/keep" />
                     <Route component={AboutUs} path="/about" />

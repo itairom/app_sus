@@ -45,8 +45,15 @@ export class EmailApp extends React.Component {
         this.setState({ isCompose: !this.state.isCompose })
     }
 
-    onSetFilter = (filterBy) => {
-        this.setState({ filterBy }, this.loadMails)
+    onSetFilter = (search) => {
+        this.setState(prevState => ({
+            filterBy: {
+                ...prevState.filterBy,
+                search
+            }
+        })
+
+            , this.loadMails)
     }
 
     onDeleteMail = (mailId) => {
@@ -72,21 +79,22 @@ export class EmailApp extends React.Component {
             }, this.loadMails())
     }
 
+
     render() {
         if (!this.state.mails) return <h2>loading</h2>
 
-        return (<React.Fragment>
-            <h1 onClick={() => { this.toggleCompose() }} className="add-btn">Compose</h1>
-            <div className="unread-counts">{this.state.countUnreadMails}</div>
-            <div className="main-mail" >
-                <EmailFilter onSetFilter={this.onSetFilter} />
-                {(this.state.isCompose) && <EmailCompose onSaveMail={this.onSaveMail} />}
-                <EmailList onSaveReplay={this.onSaveReplay} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
-            </div>
+        return (
 
-        </React.Fragment>
+  <React.Fragment>
+                <h1 onClick={() => { this.toggleCompose() }} className="add-btn">Compose</h1>
+                <div className="main-mail" >
+                    <div className="unread-counts">{this.state.countUnreadMails}</div>
+                    <EmailFilter onSetFilter={this.onSetFilter} />
+                    {(this.state.isCompose) && <EmailCompose onSaveMail={this.onSaveMail} />}
+                    <EmailList onSaveReplay={this.onSaveReplay} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
+                </div>
+            </React.Fragment>
         )
-
     }
 
 }

@@ -1,10 +1,10 @@
 import { EmailPreview } from './EmailPreview.jsx'
 
-export function EmailList({ mails,onDeleteMail,onSaveReplay }) {
+export function EmailList({ mails,onDeleteMail,onSaveReplay,toggleReply }) {
 
     return (
         <div className ="mail-list">
-            {mails.map((mail) => <EmailPreview onSaveReplay={onSaveReplay} onDeleteMail={onDeleteMail} key={mail.id} mail={mail} />)}
+            {mails.map((mail) => <EmailPreview  onSaveReplay={onSaveReplay} onDeleteMail={onDeleteMail} key={mail.id} mail={mail} />)}
         </div>
 
     )

@@ -32,7 +32,12 @@
     border-top: #e8eaed solid 1px;
     text-align: left;
     margin-left: 10px;
-    cursor: pointer;
+    padding-top: 5px;
+}
+
+.card-preview > *{
+    padding-bottom: 10px;
+    
 }
 
 .add-btn {
@@ -55,17 +60,17 @@
 
 .mail-filter{
     position: absolute;
-    top: 21px;
-}
+    top: -40px;}
 
 
 .unread-counts{
     z-index: 1;
     display: block;
     position: absolute;
-    top: 67px;
-    left: 90px;
+    top: -20px;
+    left: -13px;
     background-color: white;
     padding: 10px;
     border-radius: 50%;
+    color: black;
 }
