@@ -46,7 +46,7 @@ function deleteNote(noteId) {
         return noteId === note.id
     })
     gNotes.splice(noteIdx, 1)
-    // _savenotesToStorage();
+    // _saveNotesToStorage();
 
     return Promise.resolve()
 }
