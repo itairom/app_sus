@@ -4,7 +4,7 @@ import { mailService } from '../services/mail-service.js'
 import { EmailList } from './EmailList.jsx'
 import { EmailCompose } from './EmailCompose.jsx'
 import { EmailFilter } from './EmailFilter.jsx'
-import { EmailCounts } from './EmailCounts.jsx'
+// import { EmailCounts } from './EmailCounts.jsx'
 
 export class EmailApp extends React.Component {
 
@@ -12,12 +12,18 @@ export class EmailApp extends React.Component {
     state = {
         mails: null,
         isCompose: false,
-        filterBy: '',
-        countUnreadMails: 0
+        countUnreadMails: 0,
+        filterBy: {
+            search: '',
+            read: true
+        }
+        // filterBySearch: '',
+        // filterByCount: false
     }
 
     componentDidMount() {
         this.loadMails()
+        this.onCountUnreadMails()
     }
 
     onCountUnreadMails() {
@@ -27,12 +33,12 @@ export class EmailApp extends React.Component {
             )
     }
 
-
     loadMails = () => {
-        mailService.query(this.state.filterBy)
+        const { search, read } = this.state.filterBy
+        mailService.query(search, read)
             .then(mails => {
                 this.setState({ mails })
-            })
+            }).then(() => this.onCountUnreadMails())
     }
 
     toggleCompose = () => {
@@ -44,7 +50,6 @@ export class EmailApp extends React.Component {
     }
 
     onDeleteMail = (mailId) => {
-        console.log(mailId);
         mailService.deleteMailById(mailId)
             .then(() => {
                 this.props.history.push('/mail')
@@ -53,7 +58,6 @@ export class EmailApp extends React.Component {
 
     onSaveMail = (mail) => {
         event.preventDefault()
-        console.log(mail);
         mailService.saveMail(mail)
             .then(() => {
                 this.props.history.push('/mail')
@@ -62,7 +66,6 @@ export class EmailApp extends React.Component {
 
     onSaveReplay = (replay) => {
         event.preventDefault()
-        console.log(replay);
         mailService.saveReplay(replay)
             .then(() => {
                 // this.props.history.push('/mail')
@@ -71,17 +74,17 @@ export class EmailApp extends React.Component {
 
     render() {
         if (!this.state.mails) return <h2>loading</h2>
-        return (
-            <React.Fragment>
-                <EmailCounts />
+
+        return (<React.Fragment>
+            <h1 onClick={() => { this.toggleCompose() }} className="add-btn">Compose</h1>
+            <div className="unread-counts">{this.state.countUnreadMails}</div>
+            <div className="main-mail" >
                 <EmailFilter onSetFilter={this.onSetFilter} />
                 {(this.state.isCompose) && <EmailCompose onSaveMail={this.onSaveMail} />}
-                {/* <h1 onClick={() => { this.toggleCompose() }} className="add-btn">
-                    <Link to="/mail/compose">+ </Link>
-                    </h1> */}
-                <h1 onClick={() => { this.toggleCompose() }} className="add-btn">+</h1>
                 <EmailList onSaveReplay={this.onSaveReplay} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
-            </React.Fragment>
+            </div>
+
+        </React.Fragment>
         )
 
     }

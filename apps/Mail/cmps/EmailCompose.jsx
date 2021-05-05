@@ -6,8 +6,8 @@ export class EmailCompose extends React.Component {
 
     state = {
         mail: {
-            subject: null,
-            body: null,
+            subject: '',
+            body: '',
             id: utilService.makeId(),
             isRead: false
         }
@@ -30,6 +30,7 @@ export class EmailCompose extends React.Component {
 
     render() {
 
+        if (!this.state.mail) return <h2>loading2</h2>
 
         const { body, isRead, subject } = this.state.mail
 

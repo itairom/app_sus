@@ -32,18 +32,30 @@ function countUnreadMails() {
 }
 
 function _createMail(...args) {
-    console.log(args);
 }
 
-function query(filterBy) {
-    if (!filterBy) return Promise.resolve(gMails)
+function query(search, read) {
+    let readFilterd;
+    if (read) {
+         readFilterd = gMails.map(mail => {
+            return mail.isRead===read  })
+    }
+
+    console.log(readFilterd);
+
+    if (!search) return Promise.resolve(gMails)
+    // gMails.sort((a, b) => a.subject.toLowerCase() - b.subject.toLowerCase())
+
+
     const filteredMails = gMails.filter(mail => {
-        return mail.subject.includes(filterBy)
+        return mail.subject.toLowerCase().includes(search.toLowerCase())
     })
+
+
     return Promise.resolve(filteredMails)
-
-
 }
+
+
 
 function saveReplay(replay) {
     // let idx = replay.mailId
@@ -57,7 +69,6 @@ function saveReplay(replay) {
 function saveMail(mail) {
     gMails.unshift(mail)
 
-    console.log(gMails);
     return Promise.resolve(mail)
 }
 

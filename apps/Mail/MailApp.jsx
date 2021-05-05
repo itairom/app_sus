@@ -21,8 +21,7 @@ export class MailApp extends React.Component {
     render() {
 
         return (
-            <section className="main-mail">
-                <h1>Inbox</h1>
+            <section className="main-app">
                 <EmailApp />
 
             </section>

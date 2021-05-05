@@ -5,7 +5,6 @@ export class EmailFilter extends React.Component {
     }
 
     componentDidMount() {
-        console.log('props');
         this.setState({ filterBy: this.props.filterBy })
     }
 

@@ -2,7 +2,6 @@ import { mailService } from '../services/mail-service.js'
 
 
 export function EmailReplayList({  replays, }) {
-console.log(replays);
     return (
         
                 replays.map(replay => {
