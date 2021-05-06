@@ -39,10 +39,8 @@ export class EmailPreview extends React.Component {
 
                 {/* <Route component={EmailDetails} path='/mail/:mailId' /> */}
 
-             {!this.state.isClicked&&  <li onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
-                    {/* <Link to={`/mail/${id}`}> */}
-                    <LongTxt text={subject} />
-                    {/* </Link> */}
+             {!this.state.isClicked&&  <li className="preview-subject" onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
+                    <LongTxt className="preview-subject" text={subject} />
                 </li>}
 
                 {this.state.isClicked && <EmailDetails toggleDetails={this.toggleDetails} onDeleteMail={this.props.onDeleteMail} mail={mail} />}

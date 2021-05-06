@@ -22,6 +22,7 @@ export class MailApp extends React.Component {
 
         return (
             <section className="main-app">
+                
                 <EmailApp />
 
 

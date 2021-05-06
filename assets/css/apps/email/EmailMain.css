@@ -1,20 +1,22 @@
 .main-app {
-    background-image: url("/apps/Mail/asset/img/background_2.jpeg");
+    /* background-image: url("/apps/Mail/asset/img/background_2.jpeg"); */
+    background-color: rgb(39, 36, 36);
     min-height: 100vh;
     background-size: cover;
+    font-family: Roboto;
+    display: flex;
 }
 
 .main-mail {
-    width: 80vw;
-    position: absolute;
+    flex: 1;
+    width: 100vw;
     right: 8px;
     top: 90px;
-    background-color: #202124f8;
+    background-color: #3a3a3af8;
     color: #e8eaed;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    max-width: 800px;
-    text-align: center;
-    margin: 0 auto;
+    /* max-width: 800px; */
+    /* text-align: center; */
+    /* margin: 0 auto; */
     display: flex;
     flex-direction: column;
 }
@@ -23,6 +25,29 @@
     padding: 10px 0;
     list-style: none;
     cursor: pointer;
+    font-family: Roboto;
+    font-size: .875rem;
+    letter-spacing: .2px;
+}
+
+.main-container {
+    flex-direction: column;
+}
+
+.sort-select {
+    height: min-content;
+}
+
+
+
+.side-bar {
+    position: fixed;
+    display: flex;
+    left: 0;
+    min-height: 100vh;
+    width: 200px;
+    background-color: #ffffff70;
+    position: relative;
 }
 
 .reply-container {
@@ -49,10 +74,29 @@
 }
 
 .card-preview {
-    border-top: #e8eaed solid 1px;
-    text-align: left;
-    margin-left: 10px;
-    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
+    display: flex;
+    position: relative;
+}
+
+.card-preview:hover {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    -webkit-box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 12%);
+    box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 12%);
+    display: flex;
+    position: relative;
+    box-shadow: inset 1px 0 0 rgb(255 255 255 / 20%), inset -1px 0 0 rgb(255 255 255 / 20%), 0 0 4px 0 rgb(95 99 104 / 60%), 0 0 6px 2px rgb(95 99 104 / 60%);
+    z-index: 2;
+}
+
+.preview-subject {}
+
+.is-read {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(51, 51, 51, 0.902);
 }
 
 .card-preview>* {
@@ -63,87 +107,10 @@
     padding-bottom: 20px;
 }
 
-.add-btn {
-    display: block;
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    color: #202124f8;
-    top: 80px;
-    font-size: .875rem;
-    border-radius: 25px;
-    padding: 10px 14px;
-    cursor: pointer;
-    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
-}
-
-.compose-mail {
-    position: fixed;
-    bottom: 0;
-    right: 200px;
-    background-color: #dadce0;
-    /* padding: 0 50px; */
-}
-
-.compose-mail>* {
-    display: flex;
-    flex-direction: column;
-    /* flex-direction: column; */
-    /* max-width: 50px; */
-}
-
-.compose-mail textarea {
-    direction: ltr;
-    min-height: 230px;
-    width: 300px;
-}
-
-.compose-mail input {
-    width: 300px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-    border: none;
-    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
-    line-height: 20px;
-    min-height: auto;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.send-btn {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    outline: none;
-    position: relative;
-    z-index: 0;
-    font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
-    font-size: .875rem;
-    letter-spacing: .25px;
-    background: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: #5f6368;
-    cursor: pointer;
-    font-weight: 500;
-    height: 36px;
-    min-width: 80px;
-    outline: none;
-    padding: 0 16px;
-    background-color: #1a73e8;
-    color: #fff;
-    border: none;
-    width: fit-content;
-    margin: 5px 5px;
-}
-
 .reply-list {
     border-top: #dadce0 solid 1px;
 }
 
-.mail-filter {
-    position: absolute;
-    top: -40px;
-}
 
 .unread-counts {
     z-index: 1;
@@ -157,30 +124,3 @@
     color: black;
 }
 
-.google-btn {
-    align-items: center;
-    border: none;
-    display: inline-flex;
-    justify-content: center;
-    outline: none;
-    position: relative;
-    z-index: 0;
-    font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
-    font-size: .875rem;
-    letter-spacing: .25px;
-    background: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: #5f6368;
-    cursor: pointer;
-    font-weight: 500;
-    height: 36px;
-    outline: none;
-    padding: 0 16px;
-    box-shadow: inset 0 0 0 1px #dadce0;
-    min-width: 104px;
-    padding-left: 12px;
-    user-select: none;
-    margin-right: 12px;
-    text-decoration: none;
-}

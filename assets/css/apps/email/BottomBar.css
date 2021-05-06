@@ -1,0 +1,8 @@
+.bottom-bar {
+
+}
+
+.bottom-bar>* {
+    flex-direction: row;
+    padding: 8px 0;
+}

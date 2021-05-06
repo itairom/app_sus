@@ -9,7 +9,8 @@ export class EmailCompose extends React.Component {
             body: '',
             id: utilService.makeId(),
             isRead: false,
-            replys:[]
+            replys: [],
+            sentAt: Date.now()
         }
     }
     componentDidMount() {
@@ -48,7 +49,7 @@ export class EmailCompose extends React.Component {
                     <label>
                         <textarea type="text" name="body" value={body} onChange={this.handleChange} />
                     </label>
-                    <button type="submit"   className="send-btn" ></button>
+                    <button type="submit" className="send-btn" ></button>
                 </form>
             </div>
         )

@@ -51,9 +51,9 @@ function query(search, read, sort) {
         })
     }
     // console.log(readFilterd);
-    console.log(readFilterd);
+    // console.log(readFilterd);
     readFilterd = sortBy(readFilterd, sort)
-    console.log(readFilterd);
+    // console.log(readFilterd);
 
     if (!search) {
         return Promise.resolve(readFilterd)
@@ -68,7 +68,7 @@ function query(search, read, sort) {
 function sortBy(mails, sort) {
     switch (sort) {
         case ('subject'): return mails.sort(sortByfilter('subject'))
-        case ('sentAt'): return mails.sort(sortByfilter('sentAt'))
+        case ('sentAt'): return mails.sort(sortByfilter('sentAt','desc'))
         case ('none'): return mails
     }
 }
