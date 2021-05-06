@@ -61,23 +61,24 @@ export class EmailApp extends React.Component {
             }, this.loadMails())
     }
 
-    onSaveMail = (mail, ev) => {
-        ev.stopPropagation()
-        ev.preventDefault()
-
-        console.log('d');
+    onSaveMail = (mail) => {
+        console.log('dd');
+        // ev.preventDefault()
         mailService.saveMail(mail)
-            .then(() => {
-                // this.props.history.push('/mail')
-            }, this.loadMails())
+        .then(() => {
+            // this.props.history.push('/mail')
+        }, this.loadMails())
+        this.toggleCompose()
     }
 
-    onSaveReply = (reply) => {
-        mailService.saveReply(reply)
-            .then(() => {
-                // this.props.history.push('/mail')
-            }, this.loadMails())
-    }
+    // onSaveReply = (reply) => {
+    //     console.log(onSaveReply, 'onSaveReply');
+
+    //     mailService.saveReply(reply)
+    //         .then(() => {
+    //             // this.props.history.push('/mail')
+    //         }, this.loadMails())
+    // }
 
     // toggleLine = () => {
     //     this.setState({ isCrossed: !this.state.isCrossed })
@@ -89,12 +90,15 @@ export class EmailApp extends React.Component {
                 ...prevState.filterBy,
                 read: !prevState.filterBy.read
             }
-        }),this.loadMails)
+        }), this.loadMails)
     }
 
     render() {
         if (!this.state.mails) return <h2>loading</h2>
-        console.log('render');
+
+       let arr= mailService.getMails()
+    //   console.log( arr[0]);
+
         return (
             <React.Fragment>
 
@@ -117,7 +121,7 @@ export class EmailApp extends React.Component {
                     <div className="unread-counts">{this.state.countUnreadMails}</div>
                     <EmailFilter onSetFilter={this.onSetFilter} />
                     {(this.state.isCompose) && <EmailCompose toggleCompose={this.toggleCompose} onSaveMail={this.onSaveMail} />}
-                    <EmailList onSetRead={this.onSetRead} onSaveReply={this.onSaveReply} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
+                    <EmailList onSetRead={this.onSetRead}  onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
                 </div>
             </React.Fragment>
         )

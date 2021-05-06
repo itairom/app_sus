@@ -12,6 +12,11 @@ export const mailService = {
     countUnreadMails,
     _getDefualtValues,
     setRead,
+    getMails
+}
+
+function getMails() {
+    return gMails
 }
 
 const KEY = 'mails'
@@ -42,15 +47,16 @@ function _createMail(...args) {
 
 function query(search, read) {
 
-    let readFilterd =gMails;
+    let readFilterd = gMails;
     if (read) {
-         readFilterd = gMails.filter(mail => {
-            return mail.isRead===!read  })
+        readFilterd = gMails.filter(mail => {
+            return mail.isRead === !read
+        })
     }
-// console.log(readFilterd);
+    // console.log(readFilterd);
 
     _saveMailsToStorage
-    if (!search) {        
+    if (!search) {
         return Promise.resolve(readFilterd)
     }
     // gMails.sort((a, b) => a.subject.toLowerCase() - b.subject.toLowerCase())

@@ -1,3 +1,6 @@
+import { MainNav } from "../../../cmps/MainNav.jsx";
+import { mailService } from '../services/mail-service.js'
+
 
 export class EmailReplySubmit extends React.Component {
 
@@ -9,11 +12,10 @@ export class EmailReplySubmit extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         this.setState(prevState => ({
             reply: {
                 ...prevState.reply,
-                mailId: this.props.id
+                mailId: this.props.match.params.id
             }
         }))
     }
@@ -29,17 +31,26 @@ export class EmailReplySubmit extends React.Component {
         }))
     }
 
+    onSaveReply = (reply) => {
+        mailService.saveReply(reply)
+            .then(() => {
+                this.props.history.push('/mail')
+            })
+    }
+
     render() {
+        <MainNav />
+
 
         const { subject, mailId } = this.state.reply
         return (
-        <div className ="reply-container">
-            <form className="reply-form flex" onSubmit={() => { this.props.onSaveReply(this.state.reply) }}>
-                <label>
-                    <textarea type="text" name="subject" value={subject} onChange={this.handleChange} />
-                </label>
-                <button>Send</button>
-            </form>
+            <div className="reply-container">
+                <form className="reply-form flex" onSubmit={ ()=>this.onSaveReply(this.state.reply) }>
+                    <label>
+                        <textarea type="text" name="subject" value={subject} onChange={this.handleChange} />
+                    </label>
+                    <button type="submit" value="Send" />
+                </form>
             </div>
         )
     }

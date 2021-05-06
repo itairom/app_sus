@@ -28,7 +28,7 @@ export class EmailDetails extends React.Component {
         
         if (!this.state.mail) return <h2>loading2</h2>
         
-        // console.log(this.state.mail.replys);
+    
         const { subject, body, isRead, id, replys } = this.state.mail
         // const { toggleDetails } = this.props.toggleDetails
         return (
@@ -39,7 +39,7 @@ export class EmailDetails extends React.Component {
                     {/* {this.state.mail.map(element,idx => {
                         <li>{replys[idx]}</li>})} */}
                     <h4 className="google-btn" onClick={() => { this.props.onDeleteMail(id) }} >Delete</h4>
-                    <Link mail={this.mail} className="google-btn" to={`/mail/reply/${id}`}>Reply</Link>
+                    <Link  mail={this.mail} className="google-btn" to={`/mail/reply/${id}`}>Reply</Link>
                     {/* <div className="google-btn" >Reply</div> */}
                     {/* {(this.state.isReply) && <EmailReplayList replays={replays} />} */}
                     {/* {this.state.isReply && <EmailReplaySubmit mail={this.state.mail} onSaveReplay={this.props.onSaveReplay} />} */}

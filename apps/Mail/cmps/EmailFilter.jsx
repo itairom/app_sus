@@ -5,33 +5,29 @@ export class EmailFilter extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ filterBy: this.props.filterBy })
+        
     }
 
 
     handleChange = ({ target }) => {
+        // console.log(target.name,target.value);
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
-        this.setState(prevState => ({
-                ...prevState,
-                [field]: value
-        }))
+        this.setState({ filterBy: value }, () => { console.log(this.state); })
     }
 
-    onFilter=(ev)=>{
+    onFilter = (ev) => {
         ev.preventDefault()
         this.props.onSetFilter(this.state.filterBy)
     }
 
     render() {
 
-const {filterBy} = this.state
+        const { filterBy } = this.state
         return (
             <form className="mail-filter" onSubmit={this.onFilter} >
-                <label>
-                <input type="text" id="filterBy" name="filterBy" value={filterBy} onChange={this.handleChange} />
-                </label>
-                <button>Search</button>
+                <input name="filterBy" type="text" value={filterBy} onChange={this.handleChange} />
+                <button type="submit" value="Search" />
             </form>
         )
     }

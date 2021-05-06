@@ -45,7 +45,7 @@ export class EmailPreview extends React.Component {
                     {/* </Link> */}
                 </li>}
 
-                {this.state.isClicked && <EmailDetails toggleDetails={this.toggleDetails} onSaveReply={this.props.onSaveReply} onDeleteMail={this.props.onDeleteMail} mail={mail} />}
+                {this.state.isClicked && <EmailDetails toggleDetails={this.toggleDetails} onDeleteMail={this.props.onDeleteMail} mail={mail} />}
             </div>
         )
 

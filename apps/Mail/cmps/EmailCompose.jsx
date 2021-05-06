@@ -26,22 +26,28 @@ export class EmailCompose extends React.Component {
         }))
     }
 
+    saveMail = (ev) => {
+        ev.preventDefault()
+        this.props.onSaveMail(this.state.mail)
+    }
+
     render() {
 
         if (!this.state.mail) return <h2>loading2</h2>
 
         const { body, isRead, subject } = this.state.mail
-        const{toggleCompose}= this.props.toggleCompose
+        const { toggleCompose } = this.props.toggleCompose
+        const { onSaveMail } = this.props
         return (
-            <div className="compose-mail ">
-                <form className="mail-form " onSubmit={(ev)=>{ this.props.onSaveMail(this.state.mail,ev)}}>
+            <div className="compose-mail">
+                <form className="mail-form " onSubmit={(ev) => this.saveMail(ev)}>
                     <label>
-                    <input placeholder="Subject" type="text" name="subject" value={subject} onChange={this.handleChange} />
+                        <input placeholder="Subject" type="text" name="subject" value={subject} onChange={this.handleChange} />
                     </label>
                     <label>
-                    <textarea type="text" name="body" value={body} onChange={this.handleChange} />
+                        <textarea type="text" name="body" value={body} onChange={this.handleChange} />
                     </label>
-                    <button type="button" onClick={()=>{this.props.toggleCompose()}} className="send-btn" >Send</button>
+                    <button type="submit"   className="send-btn" ></button>
                 </form>
             </div>
         )
