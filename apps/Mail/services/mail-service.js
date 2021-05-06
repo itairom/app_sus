@@ -111,17 +111,13 @@ function saveReply(reply) {
         return reply.mailId === mail.id
     })
 
-    console.log(gMails[idx].replys);
-
     gMails[idx].replys.push(reply)
-    console.log(gMails[idx].replys);
 
     _saveMailsToStorage
     return Promise.resolve(reply)
 }
 
 function saveMail(mail) {
-    console.log(mail, 'mail');
     gMails.unshift(mail)
     _saveMailsToStorage
     return Promise.resolve(mail)

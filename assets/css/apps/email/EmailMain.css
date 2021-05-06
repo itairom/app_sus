@@ -92,7 +92,9 @@
     z-index: 2;
 }
 
-.preview-subject {}
+.preview-subject {
+    margin-left: 20px;
+}
 
 .is-read {
     color: rgba(255, 255, 255, 1);
@@ -100,7 +102,16 @@
 }
 
 .card-preview>* {
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
+    align-self: center; 
+    padding-left: 20px;
+
+}
+
+.card-preview img{
+    width :40px;
+    height :40px;
+
 }
 
 .mail-details>* {

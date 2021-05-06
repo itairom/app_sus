@@ -32,7 +32,6 @@ export class EmailReplySubmit extends React.Component {
     }
 
     onSaveReply = (reply) => {
-        console.log('sss');
         mailService.saveReply(reply)
             .then(() => {
                 this.props.history.push('/mail')

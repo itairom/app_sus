@@ -36,12 +36,12 @@ export class EmailPreview extends React.Component {
         return (
 
             <div className="card-preview" >
-
-                {/* <Route component={EmailDetails} path='/mail/:mailId' /> */}
-
-             {!this.state.isClicked&&  <li className="preview-subject" onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
+                <img src="apps/Mail/asset/svg/star.svg"  />
+                <div className="sender-name">Benny Gantz</div>
+             {!this.state.isClicked&&  <li className="preview-subject flex" onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
                     <LongTxt className="preview-subject" text={subject} />
                 </li>}
+
 
                 {this.state.isClicked && <EmailDetails toggleDetails={this.toggleDetails} onDeleteMail={this.props.onDeleteMail} mail={mail} />}
             </div>

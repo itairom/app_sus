@@ -30,7 +30,7 @@ export class KeepAdd extends React.Component {
                     [field]: value
                 }
             }
-        }),()=>console.log(this.state))
+        }))
     }
 
     changeInput = (type) => {
@@ -84,7 +84,6 @@ export class KeepAdd extends React.Component {
         ev.preventDefault()
         this.props.addNote(this.state.note)
 
-        console.log(this.state);
     }
 
 

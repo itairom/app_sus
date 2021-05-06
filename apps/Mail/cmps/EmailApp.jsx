@@ -71,19 +71,6 @@ export class EmailApp extends React.Component {
         this.toggleCompose()
     }
 
-    // onSaveReply = (reply) => {
-    //     console.log(onSaveReply, 'onSaveReply');
-
-    //     mailService.saveReply(reply)
-    //         .then(() => {
-    //             // this.props.history.push('/mail')
-    //         }, this.loadMails())
-    // }
-
-    // toggleLine = () => {
-    //     this.setState({ isCrossed: !this.state.isCrossed })
-    // }
-
     toggleRead = () => {
         this.setState(prevState => ({
             filterBy: {
@@ -94,17 +81,13 @@ export class EmailApp extends React.Component {
     }
 
     onSetSort = ({ target }) => {
-        // const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
-        // console.log(value);
         this.setState({ sortBy: value }, this.loadMails) //console.log( this.state.sortBy))
     }
 
     render() {
         if (!this.state.mails) return <h2>loading</h2>
-
         let arr = mailService.getMails()
-        //   console.log( arr[0]);
         console.log(this.state.sortBy);
         return (
             <React.Fragment>
@@ -119,15 +102,15 @@ export class EmailApp extends React.Component {
 
                     <section className="top-bar flex">
                         <EmailFilter onSetFilter={this.onSetFilter} />
-                        <img src="apps/Mail/asset/img/info.png" alt="" srcset="" />
-                        <img src="apps/Mail/asset/img/settings.png" alt="" srcset="" />
+                        <img src="apps/Mail/asset/img/info.png"  />
+                        <img src="apps/Mail/asset/img/settings.png"  />
+                        <img src="apps/Mail/asset/img/apps.png"  />
                     </section>
 
                     <section className=" bottom-bar flex">
                         <select className="sort-select" name="sort" value={this.state.sortBy} onChange={this.onSetSort}>
                             <option value="subject">Title</option>
                             <option value="sentAt">Date</option>
-                            {/* <option value="none">None</option> */}
                         </select>
 
                         <form className="toggle-unread">
@@ -140,6 +123,9 @@ export class EmailApp extends React.Component {
                                     onChange={() => this.toggleRead()} />
                             </label>
                         </form>
+
+                    <div className="msg-count">1 - {this.state.mails.length} Of Messages</div>
+
                     </section>
 
 

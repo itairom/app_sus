@@ -14,7 +14,6 @@ export class EmailCompose extends React.Component {
         }
     }
     componentDidMount() {
-        console.log(this.props);
     }
 
     handleChange = ({ target }) => {

@@ -5,14 +5,14 @@ export class EmailFilter extends React.Component {
     }
 
     componentDidMount() {
-        
+
     }
 
 
     handleChange = ({ target }) => {
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
-        this.setState({ filterBy: value }, () => { console.log(this.state); })
+        this.setState({ filterBy: value })
     }
 
     onFilter = (ev) => {
