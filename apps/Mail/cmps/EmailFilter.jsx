@@ -5,15 +5,14 @@ export class EmailFilter extends React.Component {
     }
 
     componentDidMount() {
-        
+
     }
 
 
     handleChange = ({ target }) => {
-        // console.log(target.name,target.value);
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
-        this.setState({ filterBy: value }, () => { console.log(this.state); })
+        this.setState({ filterBy: value })
     }
 
     onFilter = (ev) => {
@@ -25,9 +24,9 @@ export class EmailFilter extends React.Component {
 
         const { filterBy } = this.state
         return (
-            <form className="mail-filter" onSubmit={this.onFilter} >
-                <input name="filterBy" type="text" value={filterBy} onChange={this.handleChange} />
-                <input  type="submit" value="Search" />
+            <form className="mail-filter flex" onSubmit={this.onFilter} >
+                <input placeholder="Search mail" name="filterBy" type="text" value={filterBy} onChange={this.handleChange} />
+                {/* <input  type="submit" value="Search" /> */}
             </form>
         )
     }

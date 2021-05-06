@@ -1,0 +1,33 @@
+
+.top-bar{
+    /* justify-content: flex-start; */
+    display: flex;
+    /* position: fixed; */
+    /* top: 0; */
+    align-items: center;
+    
+}
+
+.top-bar img{
+    display: flex;
+    width: 24px;
+    height: 24px;
+    /* flex-grow: 1; */
+    margin:0 10px;
+}
+
+
+.mail-filter {
+    display: flex;
+    flex-grow: 6;
+    background: #f1f3f4;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* width: 720px; */
+    /* position: relative; */
+    /* justify-content: left; */
+    padding: 8px 0;
+    max-width: 600px;
+}

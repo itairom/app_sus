@@ -15,7 +15,7 @@ export function App() {
     return (
         <Router>
             <header>
-                <MainNav />
+                {/* <MainNav /> */}
             </header>
 
             <main>

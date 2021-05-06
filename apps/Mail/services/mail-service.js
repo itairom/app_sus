@@ -51,9 +51,9 @@ function query(search, read, sort) {
         })
     }
     // console.log(readFilterd);
-    console.log(readFilterd);
+    // console.log(readFilterd);
     readFilterd = sortBy(readFilterd, sort)
-    console.log(readFilterd);
+    // console.log(readFilterd);
 
     if (!search) {
         return Promise.resolve(readFilterd)
@@ -68,7 +68,7 @@ function query(search, read, sort) {
 function sortBy(mails, sort) {
     switch (sort) {
         case ('subject'): return mails.sort(sortByfilter('subject'))
-        case ('sentAt'): return mails.sort(sortByfilter('sentAt'))
+        case ('sentAt'): return mails.sort(sortByfilter('sentAt','desc'))
         case ('none'): return mails
     }
 }
@@ -111,17 +111,13 @@ function saveReply(reply) {
         return reply.mailId === mail.id
     })
 
-    console.log(gMails[idx].replys);
-
     gMails[idx].replys.push(reply)
-    console.log(gMails[idx].replys);
 
     _saveMailsToStorage
     return Promise.resolve(reply)
 }
 
 function saveMail(mail) {
-    console.log(mail, 'mail');
     gMails.unshift(mail)
     _saveMailsToStorage
     return Promise.resolve(mail)

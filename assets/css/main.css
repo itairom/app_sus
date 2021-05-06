@@ -1,4 +1,4 @@
-@import '../css/apps/email/EmailMain.css';
+/* MAIL */
 @import '../css/apps/email/EmailMain.css';
 @import '../css/basics/base.css';
 @import '../css/basics/fonts.css';
@@ -6,6 +6,11 @@
 @import '../css/basics/MainNav.css';
 @import '../css/basics/UserMsg.css';
 @import '../css/basics/helpers.css';
+@import '../css/apps/email/BottomBar.css';
+@import '../css/apps/email/Buttons.css';
+@import '../css/apps/email/ComposeMail.css';
+@import '../css/apps/email/EmailMain.css';
+@import '../css/apps/email/TopBar.css';
 
 
 /* KEEP */
