@@ -14,8 +14,19 @@ export const KeepService = {
     deleteNote
 }
 
-function query() {
-    return Promise.resolve(gNotes)
+function query(filterBy) {
+    const { type, txt, isPinned } = filterBy
+    if (!txt && type === 'All') return Promise.resolve(gNotes)
+    console.log(type);
+    const filterNotes = gNotes.filter(note => {
+        const field = note.type === 'NoteTxt' ? 'txt' : 'title'
+        return (
+            (note.info[field].toLowerCase().includes(txt.toLowerCase())) &&
+            (type !== 'All' ? note.type === type : true)
+        )
+    })
+
+    return Promise.resolve(filterNotes)
 }
 
 function getNoteById(NoteId) {
@@ -88,7 +99,8 @@ function _defaultNotes() {
             type: "NoteImg",
             info: {
                 url: "https://cdn.pixabay.com/photo/2016/02/22/10/06/hedgehog-1215140_960_720.jpg",
-                title: "Me playing Mi"
+                title: "Me playing Mi",
+                // txt: ''
             },
             style: {
                 backgroundColor: "#00d"
@@ -99,7 +111,8 @@ function _defaultNotes() {
             id: utilService.makeId(),
             type: "NoteTodos",
             info: {
-                label: "ToDos",
+                // txt: '',
+                title: "ToDos",
                 todos: [
                     { txt: "Do that", doneAt: null },
                     { txt: "Do this", doneAt: Date.now() }
@@ -110,6 +123,7 @@ function _defaultNotes() {
             id: utilService.makeId(),
             type: "NoteVideo",
             info: {
+                // txt: '',
                 src: "https://www.youtube.com/watch?v=tAe2Q_LhY8g",
                 title: "Me playing Mi"
             }
@@ -118,6 +132,7 @@ function _defaultNotes() {
             id: utilService.makeId(),
             type: "NoteImg",
             info: {
+                // txt: '',
                 url: "https://images.pexels.com/photos/7678410/pexels-photo-7678410.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                 title: "Me playing Mi"
             },

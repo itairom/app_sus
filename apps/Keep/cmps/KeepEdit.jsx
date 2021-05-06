@@ -51,7 +51,7 @@ export class KeepEdit extends React.Component {
                             onChange={this.handleChange}
                             placeholder='Update the note'
                             autoComplete="off"
-                            required
+                            // required
                         />
                         {'title' in info &&
                             <input className="input-img-title"
