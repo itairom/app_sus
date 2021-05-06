@@ -1,4 +1,4 @@
-.note-img img{
+.note-img .keep-img{
     width: 200px;
-    
+    margin-block-end: 10px;  
 }

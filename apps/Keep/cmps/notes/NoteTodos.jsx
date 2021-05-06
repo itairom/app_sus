@@ -1,6 +1,6 @@
 import { NoteToolBar } from './NoteToolBar.jsx'
 
-export function NoteTodos({ note, deleteNote }) {
+export function NoteTodos({ note, deleteNote,updateNote }) {
 
     return (
 
@@ -16,7 +16,7 @@ export function NoteTodos({ note, deleteNote }) {
                 </div>
 
             })}
-            <NoteToolBar deleteNote={deleteNote} note={note} />
+            <NoteToolBar deleteNote={deleteNote} note={note} updateNote={updateNote} />
         </section>
 
 

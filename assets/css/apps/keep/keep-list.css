@@ -1,21 +1,20 @@
-.keep-list{
+.keep-list {
     display: flex;
     flex-wrap: wrap;
     padding: 10px 0;
     justify-content: center;
+    max-width: 70%;
 }
 
-.keep-list > * {
+.keep-list>* {
     display: flex;
     flex-direction: column;
     box-shadow: 0 0px 3px 2px #7e7d7d78;
     padding: 10px;
     position: relative;
     border-radius: 10px;
-    
-
-}
-
-.keep-list > * {
+    text-align: center;
     margin: 10px;
+    max-width: 240px;
+    min-width: 200px;
 }

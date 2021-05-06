@@ -1,11 +1,26 @@
-.keep-edit input{
+.keep-edit input {
     position: absolute;
     width: 100%;
     right: 0;
+    bottom: -25px;
+}
+
+.keep-edit .input-img-title {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    bottom: -51px;
 }
 
 
-.keep-edit .edit-btn{
+.keep-edit .edit-btn {
     width: 20px;
     margin: 0;
+}
+
+.keep-edit .btn-submit {
+    position: absolute;
+    width: 25%;
+    right: 84px;
+    bottom: -76px;
 }

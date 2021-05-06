@@ -34,6 +34,7 @@ export class KeepAdd extends React.Component {
     }
 
     changeInput = (type) => {
+        
         switch (type) {
             case 'NoteTxt':
                 return this.setState({
@@ -65,7 +66,7 @@ export class KeepAdd extends React.Component {
                         ...this.state.note,
                         type,
                         info: {
-                            title: "ToDos",
+                            title: '',
                             todos: [
                                 { txt: "Do that", doneAt: null },
                                 { txt: "Do this", doneAt: Date.now() }
@@ -98,10 +99,12 @@ export class KeepAdd extends React.Component {
                     <input
                         type="text"
                         name={(type==="NoteTxt")?"txt": (type==="NoteTodos")?"todos":"url" }
-                        value={url || txt || todos}
+                        value={(type === "NoteTxt") ? info.txt : (type === "NoteTodos") ? info.todos : info.url}
                         onChange={this.handleChange}
                         placeholder={placeholder}
                         autoComplete="off"
+                        required
+
                     />
                     {'title' in info &&
                         <input
@@ -112,6 +115,7 @@ export class KeepAdd extends React.Component {
                             placeholder="Enter title"
                             autoComplete="off"
                         />}
+                        {'title' in info &&<button  className="btn-submit">submit</button>}
                 </form>
                 <div className="note-add-buttons">
                     <div onClick={() => this.changeInput("NoteTxt")}>

@@ -23,7 +23,7 @@ export class KeepEdit extends React.Component {
                     [field]: value
                 }
             }
-        }), () => console.log(this.state.note))
+        }))
     }
 
     onUpdateNote = (ev) => {
@@ -33,22 +33,39 @@ export class KeepEdit extends React.Component {
     }
 
     render() {
-        const { isEdit, txt } = this.state
+        const { isEdit, note } = this.state
+        const { info, type, title } = note
+
         return (
             <section className="keep-edit">
                 <span onClick={() => this.toggleInputEdit()}>
                     <img className="edit-btn" src="apps/Keep/assets/icons/edit.png" alt="" />
                 </span>
-                <form onSubmit={this.onUpdateNote}>
-                    {isEdit &&
-                        <input type="text"
-                            name="txt"
-                            value={txt}
+
+                {isEdit &&
+                    <form onSubmit={this.onUpdateNote}>
+                        <input
+                            type="text"
+                            name={(type === "NoteTxt") ? "txt" : (type === "NoteTodos") ? "todos" : "url"}
+                            value={(type === "NoteTxt") ? info.txt : (type === "NoteTodos") ? info.todos : info.url}
                             onChange={this.handleChange}
-                            placeholder={txt}
-                            autoComplete="off"/>
-                            }
-                </form>
+                            placeholder='Update the note'
+                            autoComplete="off"
+                            required
+                        />
+                        {'title' in info &&
+                            <input className="input-img-title"
+                                type="text"
+                                name="title"
+                                value={title}
+                                onChange={this.handleChange}
+                                placeholder="Enter title"
+                                autoComplete="off"
+                            />}
+                        {'title' in info && <button className="btn-submit">submit</button>}
+
+                    </form>
+                }
             </section>
         )
     }
