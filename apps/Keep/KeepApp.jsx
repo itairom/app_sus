@@ -42,7 +42,6 @@ export class KeepApp extends React.Component {
                 <KeepAdd addNote={this.addNote} />
                 <h2>Your Notes</h2>
                 <KeepList notes={notes} deleteNote={this.onDeleteNote} updateNote={this.onUpdateNote} />
-
             </section>
         )
     }

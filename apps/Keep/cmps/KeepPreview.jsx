@@ -6,7 +6,7 @@ import { NoteVideo } from './notes/NoteVideo.jsx'
 export function KeepPreview({ note, deleteNote, updateNote }) {
 
     switch (note.type) {
-        case 'NoteText':
+        case 'NoteTxt':
             return <NoteTxt note={note} deleteNote={deleteNote} updateNote={updateNote} />
         case 'NoteImg':
             return <NoteImg note={note} deleteNote={deleteNote} updateNote={updateNote} />
@@ -15,8 +15,7 @@ export function KeepPreview({ note, deleteNote, updateNote }) {
         case 'NoteVideo':
             return <NoteVideo note={note} deleteNote={deleteNote} updateNote={updateNote} />
         default:
-            return <p>couldn't find note</p>
+            return null
     }
-
 
 }

@@ -23,7 +23,7 @@ export class KeepEdit extends React.Component {
                     [field]: value
                 }
             }
-        }), () => console.log(target.value))
+        }), () => console.log(this.state.note))
     }
 
     onUpdateNote = (ev) => {
@@ -37,10 +37,17 @@ export class KeepEdit extends React.Component {
         return (
             <section className="keep-edit">
                 <span onClick={() => this.toggleInputEdit()}>
-                <img className="edit-btn" src="apps/Keep/assets/icons/edit.png" alt=""/>
+                    <img className="edit-btn" src="apps/Keep/assets/icons/edit.png" alt="" />
                 </span>
                 <form onSubmit={this.onUpdateNote}>
-                    {isEdit && <input type="text" name="txt" value={txt} onChange={this.handleChange} placeholder={'Edit your note'} />}
+                    {isEdit &&
+                        <input type="text"
+                            name="txt"
+                            value={txt}
+                            onChange={this.handleChange}
+                            placeholder={txt}
+                            autoComplete="off"/>
+                            }
                 </form>
             </section>
         )

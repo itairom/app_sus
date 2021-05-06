@@ -76,7 +76,7 @@ function _defaultNotes() {
     return [
         {
             id: utilService.makeId(),
-            type: "NoteText",
+            type: "NoteTxt",
             isPinned: true,
             info: {
                 txt: "Fullstack Me Baby!"
@@ -110,7 +110,8 @@ function _defaultNotes() {
             id: utilService.makeId(),
             type: "NoteVideo",
             info: {
-                txt: "note-video"
+                src: "https://www.youtube.com/watch?v=tAe2Q_LhY8g",
+                title: "Me playing Mi"
             }
         },
         {
