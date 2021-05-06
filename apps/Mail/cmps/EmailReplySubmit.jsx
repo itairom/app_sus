@@ -1,9 +1,8 @@
 
-
-export class EmailReplaySubmit extends React.Component {
+export class EmailReplySubmit extends React.Component {
 
     state = {
-        replay: {
+        reply: {
             subject: '',
             mailId: null
         }
@@ -11,9 +10,9 @@ export class EmailReplaySubmit extends React.Component {
 
     componentDidMount() {
         console.log(this.props);
-       this.setState(prevState => ({
-            replay: {
-                ...prevState.replay,
+        this.setState(prevState => ({
+            reply: {
+                ...prevState.reply,
                 mailId: this.props.id
             }
         }))
@@ -23,8 +22,8 @@ export class EmailReplaySubmit extends React.Component {
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
         this.setState(prevState => ({
-            replay: {
-                ...prevState.replay,
+            reply: {
+                ...prevState.reply,
                 [field]: value
             }
         }))
@@ -32,17 +31,16 @@ export class EmailReplaySubmit extends React.Component {
 
     render() {
 
-
-        const { subject,mailId } = this.state.replay
+        const { subject, mailId } = this.state.reply
         return (
-            <form className="replay-form flex" onSubmit={() => { this.props.onSaveReplay(this.state.replay) }}>
-                <label>body
+        <div className ="reply-container">
+            <form className="reply-form flex" onSubmit={() => { this.props.onSaveReply(this.state.reply) }}>
+                <label>
                     <textarea type="text" name="subject" value={subject} onChange={this.handleChange} />
                 </label>
                 <button>Send</button>
             </form>
+            </div>
         )
     }
-
-
 }
