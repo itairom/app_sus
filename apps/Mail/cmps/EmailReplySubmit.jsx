@@ -32,6 +32,7 @@ export class EmailReplySubmit extends React.Component {
     }
 
     onSaveReply = (reply) => {
+        console.log('sss');
         mailService.saveReply(reply)
             .then(() => {
                 this.props.history.push('/mail')
@@ -49,7 +50,7 @@ export class EmailReplySubmit extends React.Component {
                     <label>
                         <textarea type="text" name="subject" value={subject} onChange={this.handleChange} />
                     </label>
-                    <button type="submit" value="Send" />
+                    <button type="submit" value="Send"  />
                 </form>
             </div>
         )

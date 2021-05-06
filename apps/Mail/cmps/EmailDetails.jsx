@@ -15,20 +15,20 @@ export class EmailDetails extends React.Component {
     componentDidMount() {
         this.setState({ mail: this.props.mail })
     }
-    
-    
+
+
     toggleReply = (ev) => {
         ev.stopPropagation()
         this.setState((prevState) => {
             return { isReply: !prevState.isReply }
         })
     }
-    
+
     render() {
-        
+
         if (!this.state.mail) return <h2>loading2</h2>
-        
-    
+
+
         const { subject, body, isRead, id, replys } = this.state.mail
         // const { toggleDetails } = this.props.toggleDetails
         return (
@@ -36,10 +36,11 @@ export class EmailDetails extends React.Component {
                 {!this.props.isReply && <section className="mail-details">
                     <h1 onClick={(ev) => { this.props.toggleDetails(ev) }} className="mail-subject">{subject}</h1>
                     <p className="mail-body">{body}</p>
-                    {/* {this.state.mail.map(element,idx => {
-                        <li>{replys[idx]}</li>})} */}
+                    {this.state.mail.replys.map((reply, idx) => {
+                        return <li className="reply-list">{reply.subject}</li>
+                    })}
                     <h4 className="google-btn" onClick={() => { this.props.onDeleteMail(id) }} >Delete</h4>
-                    <Link  mail={this.mail} className="google-btn" to={`/mail/reply/${id}`}>Reply</Link>
+                    <Link mail={this.mail} className="google-btn" to={`/mail/reply/${id}`}>Reply</Link>
                     {/* <div className="google-btn" >Reply</div> */}
                     {/* {(this.state.isReply) && <EmailReplayList replays={replays} />} */}
                     {/* {this.state.isReply && <EmailReplaySubmit mail={this.state.mail} onSaveReplay={this.props.onSaveReplay} />} */}

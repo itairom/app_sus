@@ -39,9 +39,14 @@
     flex-direction: column;
 }
 
-.reply-form textarea{
+.reply-form button {
+    height: 40px;
+}
+
+.reply-form textarea {
     height: 200px;
-    width: 300px;}
+    width: 300px;
+}
 
 .card-preview {
     border-top: #e8eaed solid 1px;
@@ -129,6 +134,10 @@
     border: none;
     width: fit-content;
     margin: 5px 5px;
+}
+
+.reply-list {
+    border-top: #dadce0 solid 1px;
 }
 
 .mail-filter {

@@ -8,7 +8,8 @@ export class EmailCompose extends React.Component {
             subject: '',
             body: '',
             id: utilService.makeId(),
-            isRead: false
+            isRead: false,
+            replys:[]
         }
     }
     componentDidMount() {

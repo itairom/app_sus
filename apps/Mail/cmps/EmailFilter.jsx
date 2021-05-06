@@ -27,7 +27,7 @@ export class EmailFilter extends React.Component {
         return (
             <form className="mail-filter" onSubmit={this.onFilter} >
                 <input name="filterBy" type="text" value={filterBy} onChange={this.handleChange} />
-                <button type="submit" value="Search" />
+                <input  type="submit" value="Search" />
             </form>
         )
     }

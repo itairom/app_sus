@@ -38,7 +38,7 @@ function _addNote(noteToAdd) {
 }
 
 function _updateNote(noteToUpdate) {
-    var noteIdx = gNotes.findIndex((note)=> {
+    var noteIdx = gNotes.findIndex((note) => {
         return note.id === noteToUpdate.id;
     })
     gNotes.splice(noteIdx, 1, noteToUpdate)
@@ -47,7 +47,7 @@ function _updateNote(noteToUpdate) {
 }
 
 function deleteNote(noteId) {
-    var noteIdx = gNotes.findIndex((note)=> {
+    var noteIdx = gNotes.findIndex((note) => {
         return noteId === note.id
     })
     gNotes.splice(noteIdx, 1)
@@ -64,7 +64,7 @@ function _createNotes() {
     }
     gNotes = notes
     _saveNotesToStorage();
-    
+
 }
 
 function _saveNotesToStorage() {

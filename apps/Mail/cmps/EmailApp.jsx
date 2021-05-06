@@ -13,7 +13,8 @@ export class EmailApp extends React.Component {
         filterBy: {
             search: '',
             read: false
-        }
+        },
+        sortBy: 'none'
     }
 
     componentDidMount() {
@@ -35,7 +36,9 @@ export class EmailApp extends React.Component {
 
     loadMails = () => {
         const { search, read } = this.state.filterBy
-        mailService.query(search, read)
+        const { sortBy } = this.state
+
+        mailService.query(search, read, sortBy)
             .then(mails => {
                 this.setState({ mails })
             }).then(() => this.onCountUnreadMails())
@@ -62,12 +65,9 @@ export class EmailApp extends React.Component {
     }
 
     onSaveMail = (mail) => {
-        console.log('dd');
-        // ev.preventDefault()
         mailService.saveMail(mail)
-        .then(() => {
-            // this.props.history.push('/mail')
-        }, this.loadMails())
+            .then(() => {
+            }, this.loadMails())
         this.toggleCompose()
     }
 
@@ -93,14 +93,29 @@ export class EmailApp extends React.Component {
         }), this.loadMails)
     }
 
+    onSetSort = ({ target }) => {
+        // const field = target.name
+        const value = target.type === 'number' ? +target.value : target.value
+        this.setState({ sortBy: value }, console.log( this.state.sortBy))// this.loadMails)
+    }
+
     render() {
         if (!this.state.mails) return <h2>loading</h2>
 
-       let arr= mailService.getMails()
-    //   console.log( arr[0]);
-
+        let arr = mailService.getMails()
+        //   console.log( arr[0]);
+        // console.log('render ');
         return (
             <React.Fragment>
+
+                <select name="sort" value={this.state.sortBy} onChange={this.onSetSort}>
+                    <option value="subject">Title</option>
+                    <option value="sentAt">Date</option>
+                    <option value="none">None</option>
+
+
+
+                </select>
 
                 <form>
                     <label>
@@ -121,7 +136,7 @@ export class EmailApp extends React.Component {
                     <div className="unread-counts">{this.state.countUnreadMails}</div>
                     <EmailFilter onSetFilter={this.onSetFilter} />
                     {(this.state.isCompose) && <EmailCompose toggleCompose={this.toggleCompose} onSaveMail={this.onSaveMail} />}
-                    <EmailList onSetRead={this.onSetRead}  onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
+                    <EmailList onSetRead={this.onSetRead} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
                 </div>
             </React.Fragment>
         )
