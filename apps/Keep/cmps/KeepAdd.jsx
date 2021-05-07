@@ -117,8 +117,8 @@ export class KeepAdd extends React.Component {
                         {'title' in info &&<button  className="btn-submit">✔</button>}
                 </form>
                 <div className="note-add-icons">
-                    <div onClick={() => this.changeInput("NoteTxt")}>
-                        <img  onClick={() => this.changeInput("NoteTxt")} src="apps/Keep/assets/icons/a.svg" alt="" />
+                    <div onClick={() => this.changeInput("NoteTxt")} >
+                        <img src="apps/Keep/assets/icons/a.svg" alt="" />
                     </div>
                     <div onClick={() => this.changeInput("NoteImg")}>
                         <img className="img-add" src="apps/Keep/assets/icons/photo.svg" alt="" />
