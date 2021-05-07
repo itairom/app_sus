@@ -10,6 +10,7 @@ export function NoteTodos({ note, deleteNote,updateNote }) {
                     todo.doneAt = (todo.doneAt) ? null : Date.now();
 
                 }}>
+                    <input className="check-input" type="checkbox" name="vehicle1" value=""></input>
                     <p className={`todo ${todo.doneAt && 'todo-done'}`}>{todo.txt}</p>
                     {todo.doneAt && <span>{Intl.DateTimeFormat('IL-il').format(todo.doneAt)}</span>}
 

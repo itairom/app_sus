@@ -6,3 +6,13 @@
     text-decoration-line: line-through;
 }
 
+.note-todos{
+    background-color: #95A7B5;
+}
+
+.note-todos .check-input{
+    height: 100%;
+    margin-inline-end: 5px;
+}
+
+

@@ -2,9 +2,14 @@
     width: 100%;
     object-fit: contain;
     margin-block-end: 10px;  
+    border-radius: 5px;
 }
 
 .note-img p{
     margin-block-end: 10px;
+}
+
+.note-img{
+    background-color: #FBF3DE;
 }
 

@@ -1,6 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
 .home-page {
     height: 90vh;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    background-color: #fff;
 
 }
 
@@ -10,9 +18,54 @@
     flex: 1;
 }
 
-.home-txt{
+.home-txt {
     display: flex;
     flex-direction: column;
     flex: 1;
+    padding-block-start: 8rem;
+    margin-inline-start: 50px;
+}
+
+.home-txt h1 {
+    margin-block-end: 50px;
+    font-size: 2.1875rem;
+}
+.home-txt h3 {
+    margin-block-end: 20px;
+}
+
+.gmail-keep-img img {
+    max-width: 100px;
+    min-width: 24px;
+    object-fit: contain;
+}
+
+.gmail-keep-img img:hover {
+    padding: 1px;
+}
+
+.gmail {
+    margin-inline-end: 15px;
+}
+
+@media (max-width:800px) {
+    .home-page {
+        flex-direction: column;
+    }
+    .home-img {
+        width: 70%;
+        
+    }
+
+    .home-txt {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding-block-start: 0;
+        margin-inline-start: 0;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
 
 }

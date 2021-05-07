@@ -4,7 +4,7 @@ export class KeepFilter extends React.Component {
         filterBy: {
             type: 'All',
             txt: '',
-            isPinned: null
+            isPinned: false
         }
     }
 
@@ -42,13 +42,13 @@ export class KeepFilter extends React.Component {
                         placeholder="Search"
                     />
                 </div>
-                {/* <label htmlFor="type"></label> */}
                 <select name="type" id="rate" value={type} onChange={this.handleChange}>
                     <option value="All">All</option>
                     <option value="NoteTxt">Text</option>
                     <option value="NoteImg">Image</option>
                     <option value="NoteTodos">todos</option>
                     <option value="NoteVideo">Video</option>
+                    <option value="NoteVideo">Pinned</option>
                 </select>       
             </form>
         )

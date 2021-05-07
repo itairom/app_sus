@@ -14,11 +14,6 @@ export class KeepAdd extends React.Component {
         placeholder: 'Enter text'
     }
 
-    componentDidMount() {
-        
-    }
-
-
     handleChange = ({ target }) => {
         const field = target.name
         const value = target.value
