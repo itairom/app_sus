@@ -11,6 +11,11 @@
     font-family: Roboto-Bold;
     src: url(../../fonts/roboto/Roboto-Bold.ttf);
   }
+@font-face {
+    font-family: indie-flower;
+    src: url(../../fonts/roboto/IndieFlower-Regular.ttf);
+  }
+
 
 textarea { resize: none; }
 
@@ -27,15 +32,7 @@ p {
 #root{
     margin: 0;
     min-height: 100vh;
-
-    /* display: flex;
-    flex-direction: column; */
-
 }
-
-/* .main{
-    flex: 1;
-} */
 
 body{
     font-family: Roboto;

@@ -62,10 +62,10 @@ export class KeepAdd extends React.Component {
                         type,
                         info: {
                             title: '',
-                            todos: [
-                                { txt: "Do that", doneAt: null },
-                                { txt: "Do this", doneAt: Date.now() }
-                            ]
+                            // todos: [
+                            //     { txt: "Do that", doneAt: null },
+                            //     { txt: "Do this", doneAt: Date.now() }
+                            // ]
                         }
                     },
                     placeholder: 'Enter comma separated todo\'s'
@@ -78,7 +78,6 @@ export class KeepAdd extends React.Component {
     onAddNote = (ev) => {
         ev.preventDefault()
         this.props.addNote(this.state.note)
-
     }
 
 

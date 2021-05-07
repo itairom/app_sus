@@ -1,3 +1,12 @@
 .note-video{
-    background-color: #CD7F7D;
+    background-color: #DE4B43;
+    color: white;
+}
+.note-video iframe{
+    object-fit: cover;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    object-fit: contain;
+    margin-block-end: 10px;  
 }

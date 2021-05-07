@@ -20,18 +20,17 @@ export class KeepApp extends React.Component {
     loadNotes = () => {
         KeepService.query(this.state.filterBy)
             .then(notes => {
-                console.log(this.state.filterBy);
                 this.setState({ notes })
             })
     }
 
     addNote = (note) => {
-        KeepService._addNote(note)
+        KeepService.addNote(note)
         this.loadNotes()
     }
 
     onUpdateNote = (note) => {
-        KeepService._updateNote(note)
+        KeepService.updateNote(note)
         this.loadNotes()
     }
 
