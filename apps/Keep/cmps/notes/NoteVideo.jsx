@@ -4,7 +4,6 @@ export function NoteVideo({ note, deleteNote }) {
         <section className="note-video">
             <iframe width="200" height="133" src="https://www.youtube.com/watch?v=tAe2Q_LhY8g">
             </iframe>
-
             <NoteToolBar deleteNote={deleteNote} note={note} />
         </section>
 

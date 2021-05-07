@@ -2,9 +2,9 @@
 @import '../css/apps/email/EmailMain.css';
 @import '../css/basics/base.css';
 @import '../css/basics/fonts.css';
-@import '../css/basics/HomePage.css';
-@import '../css/basics/MainNav.css';
-@import '../css/basics/UserMsg.css';
+@import '../css/basics/home-page.css';
+@import '../css/basics/main-nav.css';
+@import '../css/basics/user-msg.css';
 @import '../css/basics/helpers.css';
 @import '../css/apps/email/BottomBar.css';
 @import '../css/apps/email/Buttons.css';
@@ -27,6 +27,7 @@
 
 /* OTHERS */
 
-@import '../css/MainNav.css';
+@import '../css/main-nav.css';
+@import './basics/home-page.css';
 
 

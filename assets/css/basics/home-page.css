@@ -1,0 +1,18 @@
+.home-page {
+    height: 90vh;
+    display: flex;
+
+}
+
+.home-img {
+    width: 50%;
+    object-fit: contain;
+    flex: 1;
+}
+
+.home-txt{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+}
