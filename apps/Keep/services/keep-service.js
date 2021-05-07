@@ -7,17 +7,14 @@ _createNotes()
 
 export const KeepService = {
     query,
-    getNoteById,
-    // saveNote
-    _addNote,
-    _updateNote,
+    addNote,
+    updateNote,
     deleteNote
 }
 
 function query(filterBy) {
     const { type, txt, isPinned } = filterBy
     if (!txt && type === 'All') return Promise.resolve(gNotes)
-    console.log(type);
     const filterNotes = gNotes.filter(note => {
         const field = note.type === 'NoteTxt' ? 'txt' : 'title'
         return (
@@ -29,18 +26,8 @@ function query(filterBy) {
     return Promise.resolve(filterNotes)
 }
 
-function getNoteById(NoteId) {
-    var note = gNotes.find(function (note) {
-        return noteId === note.id
-    })
-    return Promise.resolve(note)
-}
 
-function saveNote(note) {
-    return note.id ? _updateNote(note) : _addNote(note)
-}
-
-function _addNote(noteToAdd) {
+function addNote(noteToAdd) {
     noteToAdd.id = utilService.makeId()
     console.log(noteToAdd);
     gNotes.unshift(noteToAdd)
@@ -48,7 +35,7 @@ function _addNote(noteToAdd) {
     return Promise.resolve(noteToAdd)
 }
 
-function _updateNote(noteToUpdate) {
+function updateNote(noteToUpdate) {
     var noteIdx = gNotes.findIndex((note) => {
         return note.id === noteToUpdate.id;
     })
@@ -90,7 +77,7 @@ function _defaultNotes() {
             type: "NoteTxt",
             isPinned: true,
             info: {
-                txt: "Fullstack Me Baby!"
+                txt: "The best proj ever!! 🤪🔥"
             }
         },
 
@@ -99,7 +86,7 @@ function _defaultNotes() {
             type: "NoteImg",
             info: {
                 url: "https://cdn.pixabay.com/photo/2016/02/22/10/06/hedgehog-1215140_960_720.jpg",
-                title: "Me playing Mi",
+                title: "Sooo cute!😍",
                 // txt: ''
             },
             style: {
@@ -111,11 +98,10 @@ function _defaultNotes() {
             id: utilService.makeId(),
             type: "NoteTodos",
             info: {
-                // txt: '',
                 title: "ToDos",
                 todos: [
-                    { txt: "Do that", doneAt: null },
-                    { txt: "Do this", doneAt: Date.now() }
+                    { txt: "Sleep", doneAt: null },
+                    { txt: "Study", doneAt: Date.now() }
                 ]
             }
         },
@@ -123,7 +109,6 @@ function _defaultNotes() {
             id: utilService.makeId(),
             type: "NoteVideo",
             info: {
-                // txt: '',
                 src: "https://www.youtube.com/watch?v=tAe2Q_LhY8g",
                 title: "Me playing Mi"
             }
@@ -132,9 +117,8 @@ function _defaultNotes() {
             id: utilService.makeId(),
             type: "NoteImg",
             info: {
-                // txt: '',
                 url: "https://images.pexels.com/photos/7678410/pexels-photo-7678410.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-                title: "Me playing Mi"
+                title: "My dog..💩"
             },
             style: {
                 backgroundColor: "#00d"

@@ -1,0 +1,311 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+main {
+    min-height: 77vh;
+}
+
+main * {
+    margin-block-end: 20px;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer {
+    background-color: black;
+    padding: 47px;
+    color: white;
+    text-align: center;
+}
+
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 180px));
+    gap: 10px;
+    justify-content: center;
+    margin-block-end: 20px;
+    padding: 10px;
+}
+
+.book-preview {
+    box-shadow: 0 0px 3px 2px #7e7d7d78;
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+}
+
+.book-details {
+    margin-inline-start: 20px;
+    justify-content: center;
+    margin-block-start: 80px;
+    display: flex;
+    width: 90%;
+}
+
+.img-details-container {
+    position: relative;
+}
+
+.sale {
+    position: absolute;
+    top: 90px;
+    background: none repeat scroll 0 0 #038744;
+    padding: 10px;
+    border-radius: 0 15px 15px 0;
+    color: white;
+    font-weight: bold;
+}
+
+.img-details {
+    width: 100%;
+    height: 100%;
+    flex-basis: 50%;
+    object-fit: cover;
+}
+
+.text-details {
+    flex-basis: 50%;
+    margin-inline-start: 40px;
+    margin-inline-end: 30px;
+    position: relative;
+}
+
+.text-details p {
+    margin: 0 0 1rem;
+}
+
+.long-txt p {
+    margin-block-end: 30px;
+}
+
+.text-details h2 {
+    margin: 0 0 1rem;
+}
+
+
+.btn-go-back {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.book-preview:hover {
+    opacity: 1;
+}
+
+.main-header {
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    padding: 9px;
+}
+
+.list-header li {
+    margin-inline-end: 10px;
+}
+
+
+
+.book-filter {
+    display: flex;
+    justify-content: center;
+    margin-block-end: 30px;
+    padding: 5px;
+    align-items: center;
+}
+
+.btn-filter {
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    width: 55px;
+}
+
+.btn-read-more,
+.btn-go-back {
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    width: 100px;
+}
+
+
+.btn-go-back {
+    background-color: #ef6d39;
+}
+
+.book-filter label:not(:first-of-type) {
+    margin-inline-start: 10px;
+}
+
+.book-filter input,
+.btn-filter {
+    margin-inline-start: 10px;
+    padding: 7px;
+}
+
+.book-filter input {
+    border-radius: 5px;
+    outline: none;
+    background-color: #e3e3e352;
+    border-radius: 10px;
+    border: 0;
+    border-bottom: 2px solid rgb(141, 133, 133);
+}
+
+
+.img {
+    width: 100%;
+}
+
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green
+}
+
+
+.review {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-link {
+    color: #ef6d39;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reviews-list {
+    min-height: 10rem;
+    max-height: 40rem;
+    overflow: scroll;
+}
+
+/* .review{
+    margin-block-end: 10px;
+
+} */
+
+/* 
+@media (max-width:900px) {
+    .book-details {
+
+    }
+
+} */
+
+/* HELPERS */
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.justify-content {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+@media (max-width:630px) {
+
+    .book-list {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(100px, 80%));
+        gap: 10px;
+        justify-content: center;
+        margin-block-end: 20px;
+    }
+
+    .book-filter {
+        display: flex;
+        margin-block-end: 30px;
+        flex-direction: column;
+        width: 50%;
+        margin: 0 auto;
+        margin-block-end: 10px;
+    }
+
+    .book-filter label {
+        margin-inline-start: 10px;
+    }
+
+    .book-filter>* {
+        margin-bottom: 5px;
+    }
+
+    .btn-filter {
+        margin: 0 auto;
+    }
+
+    .book-details {
+        flex-direction: column;
+    }
+
+    .img-details {
+        width: 100%;
+    }
+
+    .text-details {
+        margin-inline-start: 0px;
+        margin-block-end: 15px;
+    }
+}

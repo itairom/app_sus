@@ -1,11 +1,8 @@
 .note-txt{
-    background-color: #FCD997;
+    background-color: #FECB20;
+    color: white;
 }
 
 .note-txt{
     padding-top: 15px;
-}
-
-.note-txt .input-txt{
-    width: 100px;
 }

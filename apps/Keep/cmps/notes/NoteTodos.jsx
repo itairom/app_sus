@@ -24,8 +24,3 @@ export function NoteTodos({ note, deleteNote,updateNote }) {
     )
 
 }
-
-// toggleLine = () => {
-//     this.setState({ isCrossed: !this.state.isCrossed })
-// }
-// <h1 className={this.state.isCrossed ? 'line-through' : ''} onClick={() => this.toggleLine()} >blaaa</h1>

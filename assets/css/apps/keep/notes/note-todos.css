@@ -1,13 +1,17 @@
 .todo-container{
     display: flex;
 }
+.todo-container span{
+    margin-inline-start: 5px;
+    color: #F63B34;
+}
 
 .todo-done {
     text-decoration-line: line-through;
 }
 
 .note-todos{
-    background-color: #95A7B5;
+    background-color: #84D0C4;
 }
 
 .note-todos .check-input{
