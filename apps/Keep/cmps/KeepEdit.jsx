@@ -38,10 +38,7 @@ export class KeepEdit extends React.Component {
 
         return (
             <section className="keep-edit">
-                <span onClick={() => this.toggleInputEdit()}>
-                    <img className="edit-btn" src="apps/Keep/assets/icons/edit.png" alt="" />
-                </span>
-
+                <img onClick={() => this.toggleInputEdit()} src="apps/Keep/assets/icons/edit.svg" alt="" />
                 {isEdit &&
                     <form onSubmit={this.onUpdateNote}>
                         <input
@@ -51,7 +48,7 @@ export class KeepEdit extends React.Component {
                             onChange={this.handleChange}
                             placeholder='Update the note'
                             autoComplete="off"
-                            // required
+                        // required
                         />
                         {'title' in info &&
                             <input className="input-img-title"
@@ -62,7 +59,7 @@ export class KeepEdit extends React.Component {
                                 placeholder="Enter title"
                                 autoComplete="off"
                             />}
-                        {'title' in info && <button className="btn-submit">submit</button>}
+                        {'title' in info && <button className="btn-submit">✔</button>}
 
                     </form>
                 }

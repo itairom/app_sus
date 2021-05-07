@@ -1,19 +1,67 @@
-.note-add{
-    display: flex;
-    margin-block-end:50px
-
-}
-.note-add-buttons{
-    display: flex;
+.note-add {
+    margin-block-end: 35px;
+    position: relative;
 }
 
-.note-add-buttons img {
-    width: 40px;
+.note-add-icons {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.note-add-icons img {
+    width: 24px;
     object-fit: cover;
     cursor: pointer;
 }
 
-.note-add-buttons>* {
-    margin-inline-start: 10px;
+.note-add-icons>*:hover {
+    opacity: .87;
+    background-color: rgba(95, 99, 104, 0.157);
+    border-radius: 50%;
 }
 
+.note-add-icons>* {
+    padding: 5px;
+}
+
+.note-add-icons .img-add {
+    color: aliceblue;
+}
+
+.note-add input {
+    border: none;
+    box-shadow: -1px 2px 3px 2px #7e7d7d78;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    width: 350px;
+}
+
+.note-add .input-title {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    bottom: -37px;
+}
+
+.note-add .btn-submit {
+    position: absolute;
+    right: 6px;
+    top: 45px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.note-add .btn-submit:hover {
+    background-color: #f1f3f4;
+}
+
+
+@media (max-width:600px) {
+    .note-add input {
+        width: 300px;
+    }
+}

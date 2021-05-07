@@ -4,3 +4,8 @@
     align-items: center;
     min-height: 100vh;
 }
+
+.keep-app h2 {
+    font-family: Roboto-Bold;
+    margin-block-end: 1.25rem;
+}

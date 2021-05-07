@@ -1,0 +1,37 @@
+.keep-filter {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-block-end: 20px;
+}
+
+.keep-filter .filter-input {
+    text-align: center;
+}
+
+
+
+.keep-filter input {
+    outline: none;
+    background-color: #f1f3f4;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    padding-inline-start: 30px;
+    margin-inline-end: 20px;
+}
+
+.keep-filter img {
+    position: absolute;
+    margin-inline-start:4px
+}
+
+.keep-filter select{
+    border: none;
+    box-shadow: -1px 2px 3px 2px #7e7d7d78;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+}

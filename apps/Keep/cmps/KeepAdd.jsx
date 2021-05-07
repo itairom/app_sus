@@ -106,7 +106,7 @@ export class KeepAdd extends React.Component {
 
                     />
                     {'title' in info &&
-                        <input
+                        <input className="input-title"
                             type="text"
                             name="title"
                             value={title}
@@ -114,20 +114,20 @@ export class KeepAdd extends React.Component {
                             placeholder="Enter title"
                             autoComplete="off"
                         />}
-                        {'title' in info &&<button  className="btn-submit">submit</button>}
+                        {'title' in info &&<button  className="btn-submit">✔</button>}
                 </form>
-                <div className="note-add-buttons">
+                <div className="note-add-icons">
                     <div onClick={() => this.changeInput("NoteTxt")}>
-                        <img src="apps/Keep/assets/icons/a.png" alt="" />
+                        <img  onClick={() => this.changeInput("NoteTxt")} src="apps/Keep/assets/icons/a.svg" alt="" />
                     </div>
                     <div onClick={() => this.changeInput("NoteImg")}>
-                        <img src="apps/Keep/assets/icons/photo.png" alt="" />
+                        <img className="img-add" src="apps/Keep/assets/icons/photo.svg" alt="" />
                     </div>
                     <div onClick={() => this.changeInput("NoteVideo")}>
-                        <img src="apps/Keep/assets/icons/youtube.png" alt="" />
+                        <img src="apps/Keep/assets/icons/youtube.svg" alt="" />
                     </div>
                     <div onClick={() => this.changeInput("NoteTodos")}>
-                        <img src="apps/Keep/assets/icons/list.png" alt="" />
+                        <img src="apps/Keep/assets/icons/list.svg" alt="" />
                     </div>
                 </div>
 

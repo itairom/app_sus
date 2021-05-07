@@ -50,9 +50,9 @@ export class KeepApp extends React.Component {
         if (!notes) return <div>Loading...</div>
         return (
             <section className="keep-app">
-                <KeepAdd addNote={this.addNote} />
-                <h2>Your Notes</h2>
                 <KeepFilter onSetFilter={this.onSetFilter} />
+                <h2>Your Notes</h2>
+                <KeepAdd addNote={this.addNote} />
                 <KeepList notes={notes} deleteNote={this.onDeleteNote} updateNote={this.onUpdateNote} />
             </section>
         )

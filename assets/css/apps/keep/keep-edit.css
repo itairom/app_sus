@@ -2,25 +2,40 @@
     position: absolute;
     width: 100%;
     right: 0;
-    bottom: -25px;
+    bottom: -27px;
+    z-index: 1;
+    background: #f1f3f4;
+}
+
+.keep-edit form input{
+    border: none;
+    box-shadow: -1px 2px 3px 2px #7e7d7d78;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
 }
 
 .keep-edit .input-img-title {
     position: absolute;
     width: 100%;
     right: 0;
-    bottom: -51px;
+    bottom: -54px;
 }
 
+.keep-edit .btn-submit {
+    position: absolute;
+    width: 10%;
+    right: 6px;
+    bottom: -51px;
+    z-index: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
 .keep-edit .edit-btn {
     width: 20px;
     margin: 0;
 }
 
-.keep-edit .btn-submit {
-    position: absolute;
-    width: 25%;
-    right: 84px;
-    bottom: -76px;
-}
+

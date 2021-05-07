@@ -5,8 +5,6 @@ export function NoteImg({note,deleteNote,updateNote}){
             <img className="keep-img" src={note.info.url} alt={note.info.title}/>
             <p>{note.info.title}</p>
             <NoteToolBar deleteNote={deleteNote} note={note} updateNote={updateNote}/>
-
-
         </section>
 
     )

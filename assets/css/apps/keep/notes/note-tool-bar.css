@@ -3,10 +3,22 @@
     justify-content: space-around;
     margin-block-start: auto;
     align-items: center;
-    cursor: pointer;
-
 }
 
-.note-tool-bar .delete-btn{
+.note-tool-bar .delete-btn {
     width: 25px;
+}
+
+.note-tool-bar img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.note-tool-bar img:hover {
+    padding: 1px;
+}
+
+.note-tool-bar img:active{
+    color: aliceblue;
 }

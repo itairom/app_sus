@@ -17,7 +17,7 @@ export class KeepFilter extends React.Component {
                 ...filterBy,
                 [field]: value
             }
-        }),()=> this.props.onSetFilter(this.state.filterBy))
+        }), () => this.props.onSetFilter(this.state.filterBy))
     }
 
     setFilter = (ev) => {
@@ -30,25 +30,26 @@ export class KeepFilter extends React.Component {
 
         return (
             <form className="keep-filter" onSubmit={this.setFilter}>
-                <label htmlFor="note">Search</label>
-                <input type="text" onChange={this.handleChange}
-                    id="note"
-                    name="txt"
-                    value={txt}
-                    onChange={this.handleChange}
-                    autoComplete="off"
+                <label htmlFor="note"></label>
+                <img src="apps/Keep/assets/icons/search.svg" alt="" />
+                <div className="filter-input">
+                    <input type="text" onChange={this.handleChange}
+                        id="note"
+                        name="txt"
+                        value={txt}
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        placeholder="Search"
                     />
-
-                <label htmlFor="type">Note type:</label>
+                </div>
+                {/* <label htmlFor="type"></label> */}
                 <select name="type" id="rate" value={type} onChange={this.handleChange}>
                     <option value="All">All</option>
                     <option value="NoteTxt">Text</option>
                     <option value="NoteImg">Image</option>
                     <option value="NoteTodos">todos</option>
                     <option value="NoteVideo">Video</option>
-                </select>
-
-
+                </select>       
             </form>
         )
     }
