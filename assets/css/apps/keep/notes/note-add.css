@@ -72,9 +72,8 @@
 }
 
 
-
 @media (max-width:600px) {
-    .note-add input {
+    .note-add form, .input-title  {
         width: 300px;
     }
 }

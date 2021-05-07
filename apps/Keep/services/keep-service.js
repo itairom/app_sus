@@ -7,7 +7,6 @@ _createNotes()
 
 export const KeepService = {
     query,
-    getNoteById,
     addNote,
     updateNote,
     deleteNote
@@ -25,13 +24,6 @@ function query(filterBy) {
     })
 
     return Promise.resolve(filterNotes)
-}
-
-function getNoteById(NoteId) {
-    var note = gNotes.find(function (note) {
-        return noteId === note.id
-    })
-    return Promise.resolve(note)
 }
 
 
