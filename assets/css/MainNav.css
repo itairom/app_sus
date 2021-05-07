@@ -1,32 +1,100 @@
 .main-nav {
+    /* position: fixed; */
+    position: fixed;
     display: flex;
-    justify-content: flex-end;
-    padding: 24px 100px;
-    position: relative;
+    align-items: center;
+    /* justify-content: flex-end; */
+    /* padding: 16px 0; */
     background-color: white;
-    border-bottom: 1px #eceff1 solid;
+    border-bottom: 1px #c0cbd3 solid;
+    height: 50px;
+    width: 100vw;
 }
 
-.main-nav img {
+.nav-icon {
+    right: 0;
+    /* width: 30px;
+    height: 30px;   */
+    padding: 10px 0;
+    padding-left: 50px;
+    align-items: center;
+}
+
+.nav-icon img {
+    margin-right: 20px;
+}
+
+.burger-icon {
+    width: 20px;
+    height: 20px;
+}
+.info-icon {
+    width: 20px;
+    height: 20px;
+}
+.settings-icon {
+    width: 20px;
+    height: 20px;
+    justify-self: end;
+}
+
+
+
+.burger-icon:hover {
+    width: 21px;
+    height: 21px;
+    /* background-color: #d9e0e4; */
+    /* border-radius: 20px; */
+}
+
+.profile-icon {
     width: 30px;
     height: 30px;
-    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    /* zoom: 150%; */
+    /* margin-left: 60px; */
+    /* padding-bottom: 20px; */
 }
 
 .apps-icon {
+    z-index: 1;
     display: flex;
+    align-items: center;
     position: relative;
     background-color: white;
     border: 1px #eceff1 solid;
-    padding-right: 8px;
-    top: 50px;
-    right: 75px;
+    /* padding-right: 8px; */
+    top: 60px;
+    left: -100px;
+    /* left: 0px; */
     /* flex-direction: column; */
-    margin-right: 30px;
+    /* margin-right: 30px; */
     border-radius: 10px;
+    box-shadow: -1px 0px 1px 0px;
 }
 
 .apps-icon img {
-    padding-top: 5px;
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.apps-icon img:hover {
+    background-color: #d9e0e4;
+    border-radius: 20px;
+}
+
+.apps-icon img {
     padding-left: 10px;
+}
+
+.apps-icon img:first-child {
+    margin-left: 5px;
+}
+
+.apps-icon img:last-child {
+    padding-right: 10px;
+    margin-right: 5px;
 }

@@ -70,6 +70,6 @@
     padding: 0 24px;
     text-transform: none;
     top: 79px;
-    position: relative;
+    position: fixed;
 }
 

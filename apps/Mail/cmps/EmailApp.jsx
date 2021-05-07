@@ -95,19 +95,10 @@ export class EmailApp extends React.Component {
                     <h1 onClick={() => { this.toggleCompose() }} className="add-btn">Compose</h1>
                 </div>
 
-
-
-
                 <div className="main-container flex">
-
                     <section className="top-bar flex">
                         <EmailFilter onSetFilter={this.onSetFilter} />
-                        <img src="apps/Mail/asset/img/info.png"  />
-                        <img src="apps/Mail/asset/img/settings.png"  />
-                        <img src="apps/Mail/asset/img/apps.png"  />
-                    </section>
-
-                    <section className=" bottom-bar flex">
+                        
                         <select className="sort-select" name="sort" value={this.state.sortBy} onChange={this.onSetSort}>
                             <option value="subject">Title</option>
                             <option value="sentAt">Date</option>
