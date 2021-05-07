@@ -31,3 +31,12 @@
     padding: 8px 0;
     max-width: 600px;
 }
+
+.mail-filter input {
+    border: none;
+    background-color: #f1f3f4;
+    padding-left: 50px;
+    user-select: none;
+    outline: none;   
+    width: 400px;
+}
