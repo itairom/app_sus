@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     padding: 10px 0;
     justify-content: center;
-    max-width: 70%;
+    /* max-width: 70%; */
 }
 
 .keep-list>* {

@@ -3,17 +3,17 @@ import { NoteImg } from './notes/NoteImg.jsx'
 import { NoteTodos } from './notes/NoteTodos.jsx'
 import { NoteVideo } from './notes/NoteVideo.jsx'
 
-export function KeepPreview({ note, deleteNote, updateNote }) {
+export function KeepPreview({ note, deleteNote, updateNote,onPinnedNote,onChangeBgc}) {
 
     switch (note.type) {
         case 'NoteTxt':
-            return <NoteTxt note={note} deleteNote={deleteNote} updateNote={updateNote} />
+            return <NoteTxt onChangeBgc={onChangeBgc} onPinnedNote={onPinnedNote} note={note} deleteNote={deleteNote} updateNote={updateNote} />
         case 'NoteImg':
-            return <NoteImg note={note} deleteNote={deleteNote} updateNote={updateNote} />
+            return <NoteImg onChangeBgc={onChangeBgc} onPinnedNote={onPinnedNote} note={note} deleteNote={deleteNote} updateNote={updateNote} />
         case 'NoteTodos':
-            return <NoteTodos note={note} deleteNote={deleteNote} updateNote={updateNote} />
+            return <NoteTodos onChangeBgc={onChangeBgc} onPinnedNote={onPinnedNote} note={note} deleteNote={deleteNote} updateNote={updateNote} />
         case 'NoteVideo':
-            return <NoteVideo note={note} deleteNote={deleteNote} updateNote={updateNote} />
+            return <NoteVideo onChangeBgc={onChangeBgc} onPinnedNote={onPinnedNote} note={note} deleteNote={deleteNote} updateNote={updateNote} />
         default:
             return null
     }

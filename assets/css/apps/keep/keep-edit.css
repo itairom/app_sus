@@ -7,7 +7,7 @@
     background: #f1f3f4;
 }
 
-.keep-edit form input{
+.keep-edit form input {
     border: none;
     box-shadow: -1px 2px 3px 2px #7e7d7d78;
     border-radius: 5px;
@@ -37,5 +37,3 @@
     width: 20px;
     margin: 0;
 }
-
-

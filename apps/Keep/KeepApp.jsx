@@ -40,9 +40,18 @@ export class KeepApp extends React.Component {
     }
 
     onSetFilter = (filterBy) => {
-        this.setState({ filterBy: {...filterBy } },this.loadNotes)
+        this.setState({ filterBy: { ...filterBy } }, this.loadNotes)
     }
 
+    onPinnedNote = (noteId) => {
+        KeepService.pinnNote(noteId)
+        this.loadNotes()
+    }
+
+    onChangeBgc = (noteId, color) => {
+        KeepService.changeBgc(noteId, color)
+        this.loadNotes()
+    }
 
     render() {
         const { notes } = this.state
@@ -52,7 +61,7 @@ export class KeepApp extends React.Component {
                 <KeepFilter onSetFilter={this.onSetFilter} />
                 <h2>Your Notes</h2>
                 <KeepAdd addNote={this.addNote} />
-                <KeepList notes={notes} deleteNote={this.onDeleteNote} updateNote={this.onUpdateNote} />
+                <KeepList onChangeBgc={this.onChangeBgc} onPinnedNote={this.onPinnedNote} notes={notes} deleteNote={this.onDeleteNote} updateNote={this.onUpdateNote} />
             </section>
         )
     }

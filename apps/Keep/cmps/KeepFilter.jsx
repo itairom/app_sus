@@ -48,7 +48,7 @@ export class KeepFilter extends React.Component {
                     <option value="NoteImg">Image</option>
                     <option value="NoteTodos">todos</option>
                     <option value="NoteVideo">Video</option>
-                    <option value="NoteVideo">Pinned</option>
+                    {/* <option value="Pinned">Pinned</option> */}
                 </select>       
             </form>
         )
