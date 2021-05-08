@@ -268,8 +268,9 @@
         left: 0;
         min-height: 100vh;
         width: 150px;
-        background-color: #868484;
+        background-color: #ffffff;
         position: relative;
+        box-shadow: inset -1px 1px 4px 0px;
     }
     .compose-mail {
         right: 0;
@@ -331,7 +332,9 @@
         left: 0;
         width: 100vw;
         height: 200px;
-        background-color: #ffffff0f;
+        background-color: rgba(255, 255, 255, 0);
+        box-shadow: inset -1px 1px 4px 0px;
+
     }
     .add-btn {
         left: 10px;
