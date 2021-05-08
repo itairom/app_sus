@@ -32,9 +32,9 @@ export function App() {
 
             </main>
 
-            <footer>
+            {/* <footer className="footer">
                 <h3>All rights reserved ©</h3>
-            </footer>
+            </footer> */}
 
         </Router>
     )
