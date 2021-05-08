@@ -82,7 +82,7 @@
 }
 
 .reply-main {
-    background-image: url("/assets/img/reply_background.jpeg");
+    background-image: url("assets/img/reply_background.jpeg");
     width: 100vw;
     height: 100vh;
     position: fixed;
