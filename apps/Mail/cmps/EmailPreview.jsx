@@ -1,5 +1,6 @@
 const { Link, Route } = ReactRouterDOM
 
+import { mailService } from '../services/mail-service.js'
 import { EmailDetails } from './EmailDetails.jsx'
 import { LongTxt } from '../cmps/util/LongTxt.jsx'
 
@@ -8,7 +9,8 @@ export class EmailPreview extends React.Component {
     state = {
         mail: null,
         visibility: null,
-        isClicked: false
+        isClicked: false,
+        isStarred: false
     }
 
     componentDidMount() {
@@ -25,7 +27,16 @@ export class EmailPreview extends React.Component {
     toggleRead = (ev) => {
         ev.preventDefault()
         this.props.onSetRead(this.state.mail.id)
+    }
 
+    // toggleStarred = (ev) => {
+    //     ev.preventDefault()
+    //     this.props.onSetRead(this.state.mail.id)
+    // }
+
+    toggleStarred() {
+        mailService.setStarred(this.state.mail.id)
+        this.setState({ isStarred: !this.state.isStarred })
     }
 
     dateToString(strTime) {
@@ -35,29 +46,29 @@ export class EmailPreview extends React.Component {
 
     render() {
 
-        if (!this.state.mail) return <h2>loading2</h2>
-        const { mail } = this.state
+        if (!this.state.mail) return <h2>loading</h2>
+        const { mail,isStarred } = this.state
         const { subject, body, isRead, id, sentAt } = mail
+        
+
+
         return (
 
             <div className="card-preview " >
-                <img src="apps/Mail/asset/svg/star.svg" />
-                <div className="sender-name flex">Benny Gantz</div>
-                {!this.state.isClicked && 
-                
-                <div className="preview-subject flex" onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
-                    <LongTxt className="preview-subject " text={subject} />
-               
 
+                {!isStarred && <img className="star-icon" onClick={() => this.toggleStarred()} src="apps/Mail/asset/svg/star.svg" />}
+                {isStarred && <img className="star-icon" onClick={() => this.toggleStarred()} src="apps/Mail/asset/svg/star-fill.svg" />}
 
-                </div>}
+                <div className="sender-name flex">Tair Bitan</div>
+                {!this.state.isClicked &&
+
+                    <div className="preview-subject flex" onClick={(ev) => { this.toggleDetails(ev) }} className={(!isRead ? 'bold' : '')}  >
+                        <LongTxt className="preview-subject " text={subject} />
+                    </div>}
 
                 <div className="msg-date flex">{this.dateToString(sentAt)}</div>
 
-
-
-
-                {this.state.isClicked && <EmailDetails toggleDetails={this.toggleDetails} onDeleteMail={this.props.onDeleteMail} mail={mail} />}
+                {this.state.isClicked && <EmailDetails onSaveReply={this.props.onSaveReply} toggleDetails={this.toggleDetails} onDeleteMail={this.props.onDeleteMail} mail={mail} />}
             </div>
         )
 

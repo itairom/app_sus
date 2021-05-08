@@ -1,5 +1,7 @@
 import { MainNav } from "../../../cmps/MainNav.jsx";
 import { mailService } from '../services/mail-service.js'
+import { EmailDetails } from './EmailDetails.jsx'
+
 
 
 export class EmailReplySubmit extends React.Component {
@@ -39,19 +41,24 @@ export class EmailReplySubmit extends React.Component {
     }
 
     render() {
-        <MainNav />
-
 
         const { subject, mailId } = this.state.reply
         return (
-            <div className="reply-container">
-                <form className="reply-form flex" onSubmit={ ()=>this.onSaveReply(this.state.reply) }>
-                    <label>
-                        <textarea type="text" name="subject" value={subject} onChange={this.handleChange} />
-                    </label>
-                    <button type="submit" value="Send"  />
-                </form>
+            <div className="reply-main">
+                <div className="reply-submit-container">
+                    <div className="reply-bar flex">
+                        <img src="apps/Mail/asset/svg/reply.svg"></img>
+                        <li>Tair Bitan</li>
+                    </div>
+
+                    <form className="reply-form flex" onSubmit={() => this.onSaveReply(this.state.reply)}>
+                        {/* <form className="mail-form " onSubmit={ ()=>this.onSaveReply(this.state.reply) }> */}
+                        <textarea autoComplete="off" type="text" name="subject" value={subject} onChange={this.handleChange} />
+                        <button type="submit" className="send-btn" >Send</button>
+                    </form>
+                </div>
             </div>
+
         )
     }
 }

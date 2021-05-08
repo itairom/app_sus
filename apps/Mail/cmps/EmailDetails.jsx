@@ -14,6 +14,7 @@ export class EmailDetails extends React.Component {
     }
     componentDidMount() {
         this.setState({ mail: this.props.mail })
+        console.log(this.props);
     }
 
 
@@ -37,17 +38,23 @@ export class EmailDetails extends React.Component {
                     <h1 onClick={(ev) => { this.props.toggleDetails(ev) }} className="mail-subject">{subject}</h1>
                     <p className="mail-body">{body}</p>
                     {this.state.mail.replys.map((reply, idx) => {
-                        return <li className="reply-list">{reply.subject}</li>
+                        return <div className="reply-container flex">
+                            <img className="profile-icon" src="assets/img/profile_icon.png" />
+                            <li>Tair Bitan</li>
+                            <li className="reply-list">{reply.subject}</li>
+                        </div>
                     })}
-                    <h4 className="google-btn" onClick={() => { this.props.onDeleteMail(id) }} >Delete</h4>
-                    <Link mail={this.mail} className="google-btn" to={`/mail/reply/${id}`}>Reply</Link>
-                    {/* <div className="google-btn" >Reply</div> */}
-                    {/* {(this.state.isReply) && <EmailReplayList replays={replays} />} */}
-                    {/* {this.state.isReply && <EmailReplaySubmit mail={this.state.mail} onSaveReplay={this.props.onSaveReplay} />} */}
+                    <h4 className="google-btn del" onClick={() => { this.props.onDeleteMail(id) }} >
+                        <img src="apps/Mail/asset/svg/trash.svg" />
+                        Delete</h4>
+                    <Link mail={this.mail} className="google-btn rep" to={`/mail/reply/${id}`}>
+                        <img src="apps/Mail/asset/svg/reply.svg" />
+                        Reply</Link>
+                    {/* <div className="google-btn" >Reply</div>
+                    {this.state.isReply && <EmailReplaySubmit mail={this.state.mail} onSaveReplay={this.props.onSaveReplay} />} */}
                 </section >}
-
-
             </React.Fragment>
+
         )
     }
 }

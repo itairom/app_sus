@@ -41,14 +41,19 @@ export class EmailCompose extends React.Component {
         const { onSaveMail } = this.props
         return (
             <div className="compose-mail">
+                <div className="compose-bar">
+                    <li>New Message</li>
+                </div>
                 <form className="mail-form " onSubmit={(ev) => this.saveMail(ev)}>
                     <label>
-                        <input placeholder="Subject" type="text" name="subject" value={subject} onChange={this.handleChange} />
+                        <input autoComplete="off" placeholder="Subject" type="text" name="subject" value={subject} onChange={this.handleChange} />
                     </label>
                     <label>
-                        <textarea type="text" name="body" value={body} onChange={this.handleChange} />
+                        <textarea autoComplete="off" type="text" name="body" value={body} onChange={this.handleChange} />
                     </label>
-                    <button type="submit" className="send-btn" ></button>
+                    <div className="submit-container">
+                    <button  type="submit" className="send-btn" >Send</button>
+                    </div>
                 </form>
             </div>
         )

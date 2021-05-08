@@ -7,8 +7,11 @@
 }
 
 .bold{
+    font-family:  Roboto-Bold;
     font-weight: bolder;
+    font-size: 1.1rem;
     /* color: yellow; */
+
 }
 
 .line-through{

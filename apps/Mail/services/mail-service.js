@@ -12,7 +12,8 @@ export const mailService = {
     countUnreadMails,
     _getDefualtValues,
     setRead,
-    getMails
+    getMails,
+    setStarred
 }
 const KEY = 'mails'
 let gMails;
@@ -31,6 +32,17 @@ function setRead(mailId) {
     return Promise.resolve(mailId)
 }
 
+function setStarred(mailId) {
+    let mailIdx = gMails.findIndex(mail => {
+        return mailId === mail.id
+    })
+    gMails[mailIdx].isStarred = true
+
+    // console.log( gMails[mailIdx]);
+    _saveMailsToStorage
+    return Promise.resolve(mailId)
+}
+
 function countUnreadMails() {
     let unreadCounts = 0
     for (const mail of gMails) {
@@ -42,24 +54,35 @@ function countUnreadMails() {
 function _createMail(...args) {
 }
 
-function query(search, read, sort) {
+function query(search, read, sort, star) {
 
-    let readFilterd = gMails;
-    if (read) {
-        readFilterd = gMails.filter(mail => {
-            return (mail.isRead === !read)
+    let filterdBy = gMails;
+
+    if (star) {
+        console.log('ss');
+        filterdBy = gMails.filter(mail => {
+            console.log('kk');
+            return (mail.isStarred === star)
         })
     }
+
+    // if (read) {
+    //     filterdBy = gMails.filter(mail => {
+    //         return (mail.isRead === !read)
+    //     })
+    // }
+
+
+    console.log(filterdBy);
     // console.log(readFilterd);
-    // console.log(readFilterd);
-    readFilterd = sortBy(readFilterd, sort)
+    filterdBy = sortBy(filterdBy, sort)
     // console.log(readFilterd);
 
     if (!search) {
-        return Promise.resolve(readFilterd)
+        return Promise.resolve(filterdBy)
     }
 
-    const searchFilterd = readFilterd.filter(mail => {
+    const searchFilterd = filterdBy.filter(mail => {
         return mail.subject.toLowerCase().includes(search.toLowerCase())
     })
     return Promise.resolve(searchFilterd)
@@ -68,7 +91,7 @@ function query(search, read, sort) {
 function sortBy(mails, sort) {
     switch (sort) {
         case ('subject'): return mails.sort(sortByfilter('subject'))
-        case ('sentAt'): return mails.sort(sortByfilter('sentAt','desc'))
+        case ('sentAt'): return mails.sort(sortByfilter('sentAt', 'desc'))
         case ('none'): return mails
     }
 }
@@ -155,17 +178,18 @@ function _saveMailsToStorage() {
 
 function _getDefualtValues() {
     return [
-        { id: utilService.makeId(), replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
-        { id: utilService.makeId(), replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
-        { id: utilService.makeId(), replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930594 },
-        { id: utilService.makeId(), replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
-        { id: utilService.makeId(), replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
-        { id: utilService.makeId(), replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930594 },
-        { id: utilService.makeId(), replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930594 },
-        { id: utilService.makeId(), replys: [], subject: 'Wassaffp?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-        { id: utilService.makeId(), replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 }
+        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 155113930594 },
+        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
+        { id: utilService.makeId(), isStarred: false, replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930544 },
+        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551123430594 },
+        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 155113393094 },
+        { id: utilService.makeId(), isStarred: false, replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 155113393014 },
+        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 155113330594 },
+        { id: utilService.makeId(), isStarred: false, replys: [], subject: 'Wassaffp?', body: 'Pick up!', isRead: false, sentAt: 15511339305941 },
+        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551033933594 }
     ]
 }
+
 
 // function sortByfilter(arr, sortBy) {
 //     console.log(arr);
@@ -188,4 +212,4 @@ function _getDefualtValues() {
 //     })
 
 //     return arr
-// }
+// 

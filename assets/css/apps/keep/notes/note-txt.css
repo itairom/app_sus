@@ -5,4 +5,20 @@
 
 .note-txt{
     padding-top: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note-txt textarea{
+    min-height: 200px;
+    max-height: 400px;
+    font-family: inherit;
+    font-size: inherit;
+    white-space: normal;
+    overflow: visible;
+    background-color: inherit;
+    border: none;
+    outline: none;
+
 }

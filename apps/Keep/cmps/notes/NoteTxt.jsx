@@ -3,7 +3,7 @@ import { NoteToolBar } from './NoteToolBar.jsx'
 export function NoteTxt({ note, deleteNote, updateNote }) {
     return (
         <section className="note-txt">
-            <p>{note.info.txt}</p>
+            <textarea>{note.info.txt}</textarea>
             <NoteToolBar deleteNote={deleteNote} updateNote={updateNote} note={note} />
         </section>
     )

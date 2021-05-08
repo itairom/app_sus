@@ -1,14 +1,12 @@
-.main-nav {
-    /* position: fixed; */
+.main-navbar {
     position: fixed;
     display: flex;
     align-items: center;
-    /* justify-content: flex-end; */
-    /* padding: 16px 0; */
     background-color: white;
     border-bottom: 1px #c0cbd3 solid;
     height: 50px;
-    /* width: 100vw; */
+    width: 100vw;
+    z-index: 3;
 }
 
 .nav-icon {
@@ -16,7 +14,7 @@
     /* width: 30px;
     height: 30px;   */
     padding: 10px 0;
-    padding-left: 50px;
+    padding-left: 20px;
     align-items: center;
 }
 
@@ -24,21 +22,29 @@
     margin-right: 20px;
 }
 
+.app-logo {
+    height: 35px;
+    position: absolute;
+    right: 53px;
+}
+
 .burger-icon {
     width: 20px;
     height: 20px;
+    margin-left: 25px;
 }
+
 .info-icon {
     width: 20px;
     height: 20px;
+    margin-left: 20px;
 }
+
 .settings-icon {
     width: 20px;
     height: 20px;
     justify-self: end;
 }
-
-
 
 .burger-icon:hover {
     width: 21px;
@@ -97,4 +103,19 @@
 .apps-icon img:last-child {
     padding-right: 10px;
     margin-right: 5px;
+}
+
+@media (max-width: 400px) {
+    .settings-icon {
+        display: none;
+    }
+    .info-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 300px) {
+    .app-logo {
+        right: 10px;
+    }
 }
