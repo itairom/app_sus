@@ -8,8 +8,6 @@ export class BookFilter extends React.Component {
         }
     }
 
- 
-
     handleChange = (ev) => {
         const field = ev.target.name
         const value = (ev.target.type === "number") ? +ev.target.value : ev.target.value
@@ -29,10 +27,8 @@ export class BookFilter extends React.Component {
         const { name, price } = this.state.filterBy
         return (
             <form className="book-filter" onSubmit={this.setFilter}>
-
                 <label htmlFor="byBook">Book Name</label>
                 <input type="text" id="byBook" name="name" value={name} onChange={this.handleChange} />
-
 
                 <label htmlFor="byBook">Price</label>
                 <input type="number" id="byBook" name="price" value={price} onChange={this.handleChange}
@@ -46,9 +42,7 @@ export class BookFilter extends React.Component {
                     value={price}
                     min="1" max="200"
                     onChange={this.handleChange} />
-
                 <button className="btn-filter">Filter</button>
-
             </form>
         )
     }

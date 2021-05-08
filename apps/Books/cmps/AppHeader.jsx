@@ -3,11 +3,9 @@ const { NavLink } = ReactRouterDOM
 
 export class AppHeader extends React.Component {
 
-
     render() {
         return (
             <nav className="main-header space-between">
-
                 <h2>Book Shop</h2>
                 <ul className="list-header clean-list flex ">
                     <li><NavLink exact to="/">Home</NavLink></li>
@@ -15,7 +13,6 @@ export class AppHeader extends React.Component {
                     <li><NavLink exact to="/book" >Books</NavLink></li>
                 </ul>
             </nav>
-
         )
     }
 }

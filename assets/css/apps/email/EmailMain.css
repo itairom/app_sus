@@ -1,5 +1,4 @@
 .main-app {
-    /* background-image: url("/apps/Mail/asset/img/background_2.jpeg"); */
     background-color: rgb(255, 255, 255);
     min-height: 100vh;
     background-size: cover;
@@ -63,8 +62,6 @@
 
 .sidebar-filter li {
     padding: 8px 0;
-    /* margin-left: 10px; */
-    /* background-color: #dadce0; */
 }
 
 .sidebar-filter li:hover {

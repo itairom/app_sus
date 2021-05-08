@@ -26,19 +26,16 @@
     text-decoration: none;
 }
 
-.del{
+.del {
     background-color: #dc3545;
-    color:white;
-
+    color: white;
 }
-.google-btn .del{
 
+.rep {
+    color: #7e7d7d;
 }
-.rep{
-color: #7e7d7d;}
 
-
-.google-btn img{
+.google-btn img {
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -92,9 +89,8 @@ color: #7e7d7d;}
     left: 16px;
 }
 
-.add-btn:hover{
+.add-btn:hover {
     box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
     background-color: #fafafb;
     cursor: pointer;
-
 }

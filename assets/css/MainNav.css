@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     background-color: white;
-    /* border-bottom: 1px #c0cbd3 solid; */
     height: 50px;
     width: 100vw;
     z-index: 3;
@@ -12,8 +11,6 @@
 
 .nav-icon {
     right: 0;
-    /* width: 30px;
-    height: 30px;   */
     padding: 10px 0;
     padding-left: 20px;
     align-items: center;
@@ -60,23 +57,11 @@
     border-radius: 20px;
 }
 
-
-.burger-icon:hover {
-    /* background-color: #d9e0e4;
-    border-radius: 20px; */
-    /* background-color: #d9e0e4; */
-    /* border-radius: 20px; */
-}
-
-
 .profile-icon {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     object-fit: cover;
-    /* zoom: 150%; */
-    /* margin-left: 60px; */
-    /* padding-bottom: 20px; */
 }
 
 .apps-icon {
@@ -86,12 +71,8 @@
     position: relative;
     background-color: white;
     border: 1px #eceff1 solid;
-    /* padding-right: 8px; */
     top: 57px;
     left: -257px;
-    /* left: 0px; */
-    /* flex-direction: column; */
-    /* margin-right: 30px; */
     border-radius: 10px;
     box-shadow: -1px 0px 1px 0px;
 }
