@@ -24,7 +24,7 @@ export class MainNav extends React.Component {
 
                 <div className="nav-icon flex">
                     <img className="profile-icon" src="assets/img/profile_icon.png" />
-                    <img className="burger-icon" onClick={() => this.toggleApps()} src="apps/Mail/asset/img/apps.png" />
+                    <img className="burger-icon" onClick={() => this.toggleApps()} src="apps/Mail/asset/img/apps.svg" />
                     {/* <div className="app-logo">AppSus.</div> */}
                     <img className="info-icon" src="apps/Mail/asset/img/info.png" />
                     <img className="settings-icon" src="apps/Mail/asset/img/settings.png" />

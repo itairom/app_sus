@@ -1,11 +1,6 @@
-import { MainNav } from "../../../cmps/MainNav.jsx";
 import { mailService } from '../services/mail-service.js'
-import { EmailDetails } from './EmailDetails.jsx'
-
-
 
 export class EmailReplySubmit extends React.Component {
-
     state = {
         reply: {
             subject: '',
@@ -41,7 +36,6 @@ export class EmailReplySubmit extends React.Component {
     }
 
     render() {
-
         const { subject, mailId } = this.state.reply
         return (
             <div className="reply-main">
@@ -52,7 +46,6 @@ export class EmailReplySubmit extends React.Component {
                     </div>
 
                     <form className="reply-form flex" onSubmit={() => this.onSaveReply(this.state.reply)}>
-                        {/* <form className="mail-form " onSubmit={ ()=>this.onSaveReply(this.state.reply) }> */}
                         <textarea autoComplete="off" type="text" name="subject" value={subject} onChange={this.handleChange} />
                         <button type="submit" className="send-btn" >Send</button>
                     </form>

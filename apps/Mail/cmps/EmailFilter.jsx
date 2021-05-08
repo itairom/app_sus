@@ -1,13 +1,7 @@
 export class EmailFilter extends React.Component {
-
     state = {
         filterBy: ''
     }
-
-    componentDidMount() {
-
-    }
-
 
     handleChange = ({ target }) => {
         const field = target.name
@@ -21,13 +15,10 @@ export class EmailFilter extends React.Component {
     }
 
     render() {
-
         const { filterBy } = this.state
         return (
             <form className="mail-filter flex" onSubmit={this.onFilter} >
                 <input placeholder="Search mail" name="filterBy" type="text" value={filterBy} onChange={this.handleChange} />
-                {/* <input  type="submit" value="Search" /> */}
-                {/* <img  src="apps/Mail/asset/svg/loupe.svg" type="submit" value="Search" /> */}
             </form>
         )
     }

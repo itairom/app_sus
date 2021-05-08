@@ -10,6 +10,7 @@ export class EmailApp extends React.Component {
         mails: null,
         isCompose: false,
         countUnreadMails: 0,
+        countStarredMails: 0,
         filterBy: {
             search: '',
             read: false,
@@ -17,7 +18,6 @@ export class EmailApp extends React.Component {
         },
         sortBy: 'none',
         shownSideBar: false
-
     }
 
     componentDidMount() {
@@ -31,6 +31,12 @@ export class EmailApp extends React.Component {
     }
 
     onCountUnreadMails() {
+        mailService.countUnreadMails()
+            .then((countedMails) =>
+                this.setState({ countUnreadMails: countedMails })
+            )
+    }
+    onCountStarredMails() {
         mailService.countUnreadMails()
             .then((countedMails) =>
                 this.setState({ countUnreadMails: countedMails })
@@ -93,18 +99,26 @@ export class EmailApp extends React.Component {
         }), this.loadMails)
     }
 
-    toggleSideBar = () => {
-        this.setState({ shownSideBar: !this.state.shownSideBar })
-        // shownSideBar
-
+    toggleShowInbox = () => {
+        this.setState(prevState => ({
+            filterBy: {
+                ...prevState.filterBy,
+                search: '',
+                read: false,
+                star: false
+            }
+        }), this.loadMails)
     }
 
+
+    toggleSideBar = () => {
+        this.setState({ shownSideBar: !this.state.shownSideBar })
+    }
 
     onSetSort = ({ target }) => {
         const value = target.type === 'number' ? +target.value : target.value
         this.setState({ sortBy: value }, this.loadMails) //console.log( this.state.sortBy))
     }
-
     onSaveReply = (reply) => {
         mailService.saveReply(reply)
             .then(() => {
@@ -114,7 +128,6 @@ export class EmailApp extends React.Component {
 
     render() {
         if (!this.state.mails) return <h2>loading</h2>
-
         const { shownSideBar } = this.state
         return (
             <React.Fragment>
@@ -122,12 +135,12 @@ export class EmailApp extends React.Component {
                     <h1 onClick={() => { this.toggleCompose() }} className="add-btn">Compose</h1>
                     <div className="sidebar-filter">
                         <div className="seperator"></div>
-                        <li className="flex">
+                        <li onClick={() => this.toggleShowInbox()} className="flex">
                             <img src="apps/Mail/asset/svg/inbox.svg" />
                             Inbox</li>
                         <li onClick={() => this.toggleShowStared()}>
                             <img src="apps/Mail/asset/svg/star.svg" />
-                            Starred</li>
+                             Starred</li>
                         <li onClick={() => this.toggleRead()}>
                             <img src="apps/Mail/asset/svg/envelope.svg" />
                             {this.state.countUnreadMails} Unread</li>
@@ -142,7 +155,7 @@ export class EmailApp extends React.Component {
 
                     <section className="top-bar flex">
 
-                        <img  onClick={() => this.toggleSideBar()} className="menu-icon" src="assets/img/menu.svg" />
+                        <img onClick={() => this.toggleSideBar()} className="menu-icon" src="assets/img/menu.svg" />
                         <EmailFilter onSetFilter={this.onSetFilter} />
 
                         <select className="sort-select" name="sort" value={this.state.sortBy} onChange={this.onSetSort}>
@@ -157,7 +170,7 @@ export class EmailApp extends React.Component {
                     <div className="main-mail flex" >
                         {/* <div className="toggle-read"></div> */}
                         {/* <div className="unread-counts">{this.state.countUnreadMails}</div> */}
-                        <EmailList onSaveReply={this.onSaveReply} loadMails={this.loadMails} toggleStared={this.toggleStared} onSetRead={this.onSetRead} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
+                        <EmailList onCountStarredMails={this.onCountStarredMails} onSaveReply={this.onSaveReply} loadMails={this.loadMails} toggleStared={this.toggleStared} onSetRead={this.onSetRead} onDeleteMail={this.onDeleteMail} mails={this.state.mails} />
                     </div>
                 </div>
                 {(this.state.isCompose) && <EmailCompose toggleCompose={this.toggleCompose} onSaveMail={this.onSaveMail} />}

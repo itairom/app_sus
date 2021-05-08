@@ -27,12 +27,15 @@
 }
 
 .del{
-    background-color: #dc3545
+    background-color: #dc3545;
+    color:white;
 
 }
 .google-btn .del{
 
 }
+.rep{
+color: #7e7d7d;}
 
 
 .google-btn img{

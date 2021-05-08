@@ -13,7 +13,7 @@ export const mailService = {
     _getDefualtValues,
     setRead,
     getMails,
-    setStarred
+    setStarred,countStarred
 }
 const KEY = 'mails'
 let gMails;
@@ -38,7 +38,6 @@ function setStarred(mailId) {
     })
     gMails[mailIdx].isStarred = true
 
-    // console.log( gMails[mailIdx]);
     _saveMailsToStorage
     return Promise.resolve(mailId)
 }
@@ -50,6 +49,13 @@ function countUnreadMails() {
     }
     return Promise.resolve(unreadCounts)
 }
+function countStarred() {
+    let starredCounts = 0
+    for (const mail of gMails) {
+        mail.isStarred ? starredCounts++ : ''
+    }
+    return Promise.resolve(starredCounts)
+}
 
 function _createMail(...args) {
 }
@@ -59,24 +65,18 @@ function query(search, read, sort, star) {
     let filterdBy = gMails;
 
     if (star) {
-        console.log('ss');
         filterdBy = gMails.filter(mail => {
-            console.log('kk');
             return (mail.isStarred === star)
         })
     }
 
-    // if (read) {
-    //     filterdBy = gMails.filter(mail => {
-    //         return (mail.isRead === !read)
-    //     })
-    // }
+    if (read) {
+        filterdBy = gMails.filter(mail => {
+            return (mail.isRead === !read)
+        })
+    }
 
-
-    console.log(filterdBy);
-    // console.log(readFilterd);
     filterdBy = sortBy(filterdBy, sort)
-    // console.log(readFilterd);
 
     if (!search) {
         return Promise.resolve(filterdBy)
@@ -120,15 +120,6 @@ function sortByfilter(key, order = 'asc') {
     };
 }
 
-
-
-
-
-
-
-
-
-
 function saveReply(reply) {
     let idx = gMails.findIndex(mail => {
         return reply.mailId === mail.id
@@ -168,7 +159,7 @@ function _createMails() {
     if (!mails || !mails.length) {
         mails = _getDefualtValues()
     }
-    gMails = mails
+    gMails = [...mails]
     _saveMailsToStorage();
 }
 function _saveMailsToStorage() {
@@ -178,38 +169,14 @@ function _saveMailsToStorage() {
 
 function _getDefualtValues() {
     return [
-        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 155113930594 },
-        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551133930594 },
-        { id: utilService.makeId(), isStarred: false, replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930544 },
-        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551123430594 },
-        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 155113393094 },
-        { id: utilService.makeId(), isStarred: false, replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 155113393014 },
-        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 155113330594 },
-        { id: utilService.makeId(), isStarred: false, replys: [], subject: 'Wassaffp?', body: 'Pick up!', isRead: false, sentAt: 15511339305941 },
-        { id: utilService.makeId(), isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551033933594 }
+        { id: utilService.makeId(),img: 'apps/Mail/asset/img/zapsplat.jpeg', isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Your ZapSplat login details?', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 1551133930514 },
+        { id: utilService.makeId(),img: 'apps/Mail/asset/img/ufo.jpeg', isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'How the Pentagon Started Taking U.F.O.s Seriously', body: 'What Home Staging Showed Me About Housing in America. The Secret History of Women in Electronic Music Is Just Beginning to Be Told', isRead: false, sentAt: 1551133930594 },
+        { id: utilService.makeId(),img: 'apps/Mail/asset/img/duo.jpeg', isStarred: false, replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 1551133930544 },
+        { id: utilService.makeId(),img: false, isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Americas #1 Lawn Care Company - Request Your Free Lawn Care Quote Today', body: 'TruGreen is the nations largest lawcare provider, serving millions ofAmerican homeowners, isRead: true, sentAt: 1551123430594 }', isRead: false, sentAt: 155113393094 },
+        { id: utilService.makeId(),img: 'apps/Mail/asset/img/codepen.png', isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 155113493094 },
+        { id: utilService.makeId(),img:'apps/Mail/asset/img/dou.png' , isStarred: false, replys: [], subject: 'Keep Duo happy with a lesson!', body: 'yo yo!', isRead: true, sentAt: 155113393014 },
+        { id: utilService.makeId(),img: false, isStarred: false, replys: [{ subject: 'we are always delighted to announce our latest innovative' }], subject: 'Spring is here! Get affordable auto insurance with GEICO!', body: 'Hello and thanks for joining ZapSplat. Your account username: gfgfdsdsds. You can now login at https://www.zapsplat.com/login. Thanks and we hope you enjoy our sounds and music.!', isRead: true, sentAt: 155113330594 },
+        { id: utilService.makeId(),img:false , isStarred: false, replys: [], subject: 'Wassap body, Are you coming to the party?? ', body: 'Pick up the phone!', isRead: false, sentAt: 15511339305941 },
+        { id: utilService.makeId(),img: false, isStarred: false, replys: [{ subject: 'The confirmation time for order 3009157721040698 has ended. If you still ' }], subject: 'The CodePen Spark: Animated Tooltips, Cut Paper Text, and Interactive Kittens?', body: 'Pick up! Animated Tooltips, Cut Paper Text, and Interactive Kittens', isRead: false, sentAt: 1551033933594 }
     ]
 }
-
-
-// function sortByfilter(arr, sortBy) {
-//     console.log(arr);
-//     // switch (sortBy){
-
-//     //     case('name') return 
-//     // }
-
-//     arr.sort((a, b) => {
-//         var subjectA = a.sortBy.toUpperCase();
-//         var subjectB = b.sortBy.toUpperCase();
-//         if (subjectA > subjectB) {
-//             return -1;
-//         }
-//         if (subjectA < subjectB) {
-//             return 1;
-//         }
-//         // names must be equal
-//         return 0;
-//     })
-
-//     return arr
-// 

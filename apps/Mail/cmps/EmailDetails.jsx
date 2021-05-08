@@ -1,12 +1,6 @@
 const { Route, Switch, Link } = ReactRouterDOM
 
-import { mailService } from '../services/mail-service.js'
-import { EmailReplySubmit } from './EmailReplySubmit.jsx'
-
-
-
 export class EmailDetails extends React.Component {
-
     state = {
         mail: null,
         isClicked: null,
@@ -14,9 +8,7 @@ export class EmailDetails extends React.Component {
     }
     componentDidMount() {
         this.setState({ mail: this.props.mail })
-        console.log(this.props);
     }
-
 
     toggleReply = (ev) => {
         ev.stopPropagation()
@@ -26,17 +18,14 @@ export class EmailDetails extends React.Component {
     }
 
     render() {
-
-        if (!this.state.mail) return <h2>loading2</h2>
-
-
+        if (!this.state.mail) return <h2>loading</h2>
         const { subject, body, isRead, id, replys } = this.state.mail
-        // const { toggleDetails } = this.props.toggleDetails
         return (
             <React.Fragment>
                 {!this.props.isReply && <section className="mail-details">
                     <h1 onClick={(ev) => { this.props.toggleDetails(ev) }} className="mail-subject">{subject}</h1>
                     <p className="mail-body">{body}</p>
+                    {this.state.mail.img && <img className="mail-img" src={this.state.mail.img} />}
                     {this.state.mail.replys.map((reply, idx) => {
                         return <div className="reply-container flex">
                             <img className="profile-icon" src="assets/img/profile_icon.png" />
@@ -50,8 +39,6 @@ export class EmailDetails extends React.Component {
                     <Link mail={this.mail} className="google-btn rep" to={`/mail/reply/${id}`}>
                         <img src="apps/Mail/asset/svg/reply.svg" />
                         Reply</Link>
-                    {/* <div className="google-btn" >Reply</div>
-                    {this.state.isReply && <EmailReplaySubmit mail={this.state.mail} onSaveReplay={this.props.onSaveReplay} />} */}
                 </section >}
             </React.Fragment>
 

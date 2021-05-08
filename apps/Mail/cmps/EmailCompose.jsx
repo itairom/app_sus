@@ -1,8 +1,6 @@
 import { utilService } from '../../../services/util-service.js'
 
-
 export class EmailCompose extends React.Component {
-
     state = {
         mail: {
             subject: '',
@@ -12,8 +10,6 @@ export class EmailCompose extends React.Component {
             replys: [],
             sentAt: Date.now()
         }
-    }
-    componentDidMount() {
     }
 
     handleChange = ({ target }) => {
@@ -35,7 +31,6 @@ export class EmailCompose extends React.Component {
     render() {
 
         if (!this.state.mail) return <h2>loading2</h2>
-
         const { body, isRead, subject } = this.state.mail
         const { toggleCompose } = this.props.toggleCompose
         const { onSaveMail } = this.props
@@ -52,7 +47,7 @@ export class EmailCompose extends React.Component {
                         <textarea autoComplete="off" type="text" name="body" value={body} onChange={this.handleChange} />
                     </label>
                     <div className="submit-container">
-                    <button  type="submit" className="send-btn" >Send</button>
+                        <button type="submit" className="send-btn" >Send</button>
                     </div>
                 </form>
             </div>

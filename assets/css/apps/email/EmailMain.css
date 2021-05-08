@@ -1,6 +1,6 @@
 .main-app {
     /* background-image: url("/apps/Mail/asset/img/background_2.jpeg"); */
-    background-color: rgb(39, 36, 36);
+    background-color: rgb(255, 255, 255);
     min-height: 100vh;
     background-size: cover;
     font-family: Roboto;
@@ -9,15 +9,8 @@
 
 .main-mail {
     margin-top: 95px;
-    /* flex: 1; */
-    /* width: 80vw; */
-    /* right: 8px; */
-    /* top: 90px; */
-    background-color: #3a3a3af8;
-    color: #e8eaed;
-    /* max-width: 800px; */
-    /* text-align: center; */
-    /* margin: 0 auto; */
+    background-color: #ffffff;
+    color: #202124;
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -38,14 +31,15 @@
     left: 0;
     min-height: 100vh;
     width: 150px;
-    background-color: #ffffff70;
+    background-color: #ffffff;
     position: relative;
+    box-shadow: inset -1px 1px 4px 0px;
 }
 
 .side-bar .seperator {
     position: relative;
-    border-top: 1px solid black;
-    width: 150px;
+    border-top: 1px solid #eceff1;
+    width: 147px;
 }
 
 .mail-body {
@@ -69,19 +63,18 @@
 
 .sidebar-filter li {
     padding: 8px 0;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     /* background-color: #dadce0; */
 }
 
 .sidebar-filter li:hover {
     z-index: 3;
-    background-color: #ffffff;
-    padding-left: 10px;
-    padding-right: 22px;
+    background-color: #f5f7f7;
     border-radius: 0 20px 20px 0;
     cursor: pointer;
     position: relative;
-    left: -11px;
+    flex: 1;
+    width: 98%;
 }
 
 .sidebar-filter img {
@@ -89,28 +82,21 @@
     height: 20px;
     margin-left: 14px;
     margin-right: 14px;
-    /* padding-left: 20px; */
-    /* background-color: #ffffff; */
 }
 
 .reply-main {
-    /* background-color: #404040; */
     background-image: url("/assets/img/reply_background.jpeg");
     width: 100vw;
     height: 100vh;
     position: fixed;
 }
 
-/* .reply-container { */
-
 .reply-submit-container {
     position: fixed;
     bottom: 0;
     right: 200px;
     background-color: #ffff;
-    /* background-color: #13df46; */
     width: 350px;
-    /* padding: 0 50px; */
     box-shadow: 0px 0px 4px 1px;
     align-items: center;
 }
@@ -141,10 +127,6 @@
 
 .reply-container img {
     margin-top: 30px;
-}
-
-.reply-container li {
-    /* white-space: nowrap;  */
 }
 
 .reply-container li:last-child {
@@ -184,9 +166,6 @@
 }
 
 .reply-form textarea {
-    /* height: 200px;
-    width: 300px;
-    border: none; */
     padding-top: 20px;
     direction: ltr;
     min-height: 230px;
@@ -217,13 +196,9 @@
     box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 12%);
     display: flex;
     position: relative;
-    box-shadow: inset 0px 0px 0 rgb(255 255 255 / 20%), inset -1px 0 0 rgb(255 255 255 / 20%), 0 0 4px 0 rgb(95 99 104 / 60%), 0 0 6px 2px rgb(95 99 104 / 60%);
+    box-shadow: inset 0px 0px 0 rgb(255 255 255 / 20%), inset -1px 0 0 rgb(255 255 255 / 20%), 0 0 4px 0 rgb(95 99 104 / 60%), 0px 3px 4px 1px rgb(95 99 104 / 60%);
+    ;
 }
-
-/* .card-preview img:hover{
-    background-color: #d9e0e4;
-    border-radius: 50%;
-} */
 
 .card-preview span {
     padding-left: 60px;
@@ -254,12 +229,16 @@
     padding-bottom: 20px;
 }
 
+.mail-details .mail-img {
+    width: 410px;
+        height: 250px;
+    object-fit: cover;
+}
+
 .unread-counts {
     z-index: 1;
     display: block;
     position: absolute;
-    /* top: -20px; */
-    /* left: -13px; */
     background-color: white;
     padding: 10px 15px;
     border-radius: 50%;
@@ -267,26 +246,15 @@
 }
 
 @media (max-width: 1000px) {
-    .msg-date {
-        /* display: none; */
-    }
-    .card-preview {
-        /* width: 800px; */
-    }
     .card-preview span {
         padding-left: 0px;
     }
     .msg-date {
         position: absolute;
-        /* right: 83px; */
     }
 }
 
 @media (max-width: 900px) {
-    .card-preview {}
-    .msg-date {
-        /* display: none; */
-    }
     .side-bar {
         display: none
     }
@@ -318,7 +286,6 @@
     .msg-date {
         display: none;
     }
-    /* TO-DO date */
 }
 
 @media (max-width: 600px) {
@@ -363,24 +330,15 @@
         top: 95px;
     }
     .sidebar-filter li:hover {
-
         z-index: 3;
         background-color: #ffffff;
-        /* padding-left: 10px;
-        padding-right: 22px; */
-        /* border-radius: 0 20px 20px 0; */
-     
-        /* cursor: pointer;
-        position: relative; */
-
         width: 100vw;
         padding-left: 190px;
     }
-
-    .mail-filter{
-        margin-left: 10px;    }
-
-    .top-bar input{
+    .mail-filter {
+        margin-left: 10px;
+    }
+    .top-bar input {
         margin-left: 10px;
     }
 }
