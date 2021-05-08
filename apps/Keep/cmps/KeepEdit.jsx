@@ -58,7 +58,8 @@ export class KeepEdit extends React.Component {
                                 onChange={this.handleChange}
                                 placeholder="Enter title"
                                 autoComplete="off"
-                            />}
+                            />
+                        }
                         {'title' in info && <button className="btn-submit">✔</button>}
 
                     </form>

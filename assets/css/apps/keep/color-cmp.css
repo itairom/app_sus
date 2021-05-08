@@ -1,0 +1,38 @@
+.color-cmp {
+    position: absolute;
+    background-color: rgb(127 127 127);
+    top: 28px;
+    border-radius: 10px;
+    display: flex;
+    padding: 5px;
+}
+
+.color-cmp .btn-color {
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    outline: none;
+}
+
+.btn-color.purpel {
+    background-color: #d7aefb;
+}
+
+.btn-color.blue {
+    background-color: #aecbfa;
+}
+
+.btn-color.yellow {
+    background-color: #fbbc04;
+}
+
+.btn-color.pink {
+    background-color:#fdcfe8;
+}
+
+.btn-color.red {
+   
+    background-color: #f28b82 ;
+}

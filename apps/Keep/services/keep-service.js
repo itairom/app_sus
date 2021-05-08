@@ -9,7 +9,9 @@ export const KeepService = {
     query,
     addNote,
     updateNote,
-    deleteNote
+    deleteNote,
+    pinnNote,
+    changeBgc
 }
 
 function query(filterBy) {
@@ -19,7 +21,7 @@ function query(filterBy) {
         const field = note.type === 'NoteTxt' ? 'txt' : 'title'
         return (
             (note.info[field].toLowerCase().includes(txt.toLowerCase())) &&
-            (type !== 'All' ? note.type === type : true)
+            (type === 'All' ? true : note.type === type)
         )
     })
 
@@ -27,9 +29,9 @@ function query(filterBy) {
 }
 
 
+
 function addNote(noteToAdd) {
     noteToAdd.id = utilService.makeId()
-    console.log(noteToAdd);
     gNotes.unshift(noteToAdd)
     _saveNotesToStorage();
     return Promise.resolve(noteToAdd)
@@ -60,7 +62,7 @@ function _createNotes() {
     if (!notes || !notes.length) {
         notes = _defaultNotes()
     }
-    gNotes = notes
+    gNotes = JSON.parse(JSON.stringify(notes))
     _saveNotesToStorage();
 
 }
@@ -69,59 +71,93 @@ function _saveNotesToStorage() {
     storageService.saveToStorage(KEY, gNotes)
 }
 
+function pinnNote(noteId) {
+    let foundNote = _getNoteById(noteId)
+    foundNote.isPinned = true
+    let notesToEdit = gNotes.filter(note => noteId !== note.id)
+    notesToEdit.unshift(foundNote)
+    gNotes = JSON.parse(JSON.stringify(notesToEdit))
+    _saveNotesToStorage();
+    return Promise.resolve(gNotes)
+}
+
+function _getNoteById(noteId) {
+    var note = gNotes.find(note => noteId === note.id)
+    return note
+}
+
+function changeBgc(noteId,color){
+    let foundNote = _getNoteById(noteId)
+    foundNote.style.backgroundColor = color;
+    updateNote(foundNote) 
+}
+
 function _defaultNotes() {
 
     return [
         {
             id: utilService.makeId(),
             type: "NoteTxt",
-            isPinned: true,
+            isPinned: false,
             info: {
                 txt: "The best proj ever!! 🤪🔥"
+            },
+            style: {
+                backgroundColor: "#fbbc04"
             }
         },
 
         {
             id: utilService.makeId(),
             type: "NoteImg",
+            isPinned: false,
             info: {
                 url: "https://cdn.pixabay.com/photo/2016/02/22/10/06/hedgehog-1215140_960_720.jpg",
                 title: "Sooo cute!😍",
-                // txt: ''
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: "#aecbfa"
             }
         },
 
         {
             id: utilService.makeId(),
             type: "NoteTodos",
+            isPinned: false,
             info: {
                 title: "ToDos",
                 todos: [
                     { txt: "Sleep", doneAt: null },
                     { txt: "Study", doneAt: Date.now() }
                 ]
+            },
+            style: {
+                backgroundColor: "#d7aefb"
             }
         },
+
         {
             id: utilService.makeId(),
             type: "NoteVideo",
+            isPinned: false,
             info: {
-                src: "https://www.youtube.com/watch?v=tAe2Q_LhY8g",
+                url: "https://www.youtube.com/embed/5qap5aO4i9A",
                 title: "Me playing Mi"
+            },
+            style: {
+                backgroundColor: "#f28b82"
             }
         },
         {
             id: utilService.makeId(),
             type: "NoteImg",
+            isPinned: false,
             info: {
                 url: "https://images.pexels.com/photos/7678410/pexels-photo-7678410.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                 title: "My dog..💩"
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: "#fdcfe8"
             }
         },
     ];

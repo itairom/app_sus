@@ -1,10 +1,10 @@
 import { NoteToolBar } from './NoteToolBar.jsx'
 
-export function NoteTodos({ note, deleteNote,updateNote }) {
+export function NoteTodos({ note, deleteNote,updateNote,onPinnedNote,onChangeBgc}) {
 
     return (
 
-        <section className="note-todos">
+        <section className="note-todos" style={{ backgroundColor: note.style.backgroundColor }}>
             {note.info.todos.map((todo, idx) => {
                 return <div className="todo-container" key={idx} onClick={() => {
                     todo.doneAt = (todo.doneAt) ? null : Date.now();
@@ -17,7 +17,7 @@ export function NoteTodos({ note, deleteNote,updateNote }) {
                 </div>
 
             })}
-            <NoteToolBar deleteNote={deleteNote} note={note} updateNote={updateNote} />
+            <NoteToolBar onChangeBgc={onChangeBgc} onPinnedNote={onPinnedNote} deleteNote={deleteNote} note={note} updateNote={updateNote} />
         </section>
 
 

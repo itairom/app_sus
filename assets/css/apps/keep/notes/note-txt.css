@@ -1,16 +1,14 @@
+
 .note-txt{
     background-color: #FECB20;
     color: white;
-}
-
-.note-txt{
     padding-top: 15px;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .note-txt textarea{
+    width: 100%;
     min-height: 200px;
     max-height: 400px;
     font-family: inherit;
@@ -20,5 +18,6 @@
     background-color: inherit;
     border: none;
     outline: none;
+    width: 150px;
 
 }
