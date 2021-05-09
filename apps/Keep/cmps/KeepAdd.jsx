@@ -8,7 +8,7 @@ export class KeepAdd extends React.Component {
                 txt: ''
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: ""
             }
         },
         placeholder: 'Enter text'
